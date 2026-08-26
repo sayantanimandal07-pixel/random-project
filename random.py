@@ -3,7 +3,6 @@ import os
 
 FILE_NAME = "tasks.json"
 
-
 # Load tasks from file
 def load_tasks():
     if os.path.exists(FILE_NAME):
@@ -33,7 +32,6 @@ def view_tasks(tasks):
         status = "✓ Completed" if task["completed"] else "Pending"
         print(f"{i}. {task['name']} [{status}]")
 
-
 # Add a new task
 def add_task(tasks):
     task_name = input("\nEnter task: ")
@@ -48,7 +46,6 @@ def add_task(tasks):
         print("Task added successfully!")
     else:
         print("Task cannot be empty!")
-
 
 # Mark task as completed
 def complete_task(tasks):
