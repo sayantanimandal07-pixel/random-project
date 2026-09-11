@@ -1,0 +1,870 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MUSEN — Music by Mood</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0d0d12;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ---------- SIDEBAR ---------- */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 230px;
+            height: 100vh;
+            background: #111116;
+            padding: 30px 20px;
+            border-right: 1px solid #272731;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 45px;
+        }
+
+        .logo span {
+            color: #b58cff;
+        }
+
+        .menu-title {
+            color: #777;
+            font-size: 12px;
+            margin: 20px 10px;
+            text-transform: uppercase;
+        }
+
+        .menu-item {
+            padding: 13px 15px;
+            margin: 6px 0;
+            border-radius: 10px;
+            color: #aaa;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background: #24202d;
+            color: white;
+        }
+
+        /* ---------- MAIN ---------- */
+
+        .main {
+            margin-left: 230px;
+            padding: 35px 45px 130px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search {
+            background: #191920;
+            border: 1px solid #292932;
+            border-radius: 30px;
+            padding: 13px 20px;
+            width: 330px;
+            color: white;
+            outline: none;
+        }
+
+        .profile {
+            background: #29232f;
+            padding: 10px 17px;
+            border-radius: 20px;
+            color: #d8bfff;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            margin-top: 40px;
+            padding: 40px;
+            border-radius: 25px;
+            background:
+                radial-gradient(circle at 80% 30%, #543d74, transparent 30%),
+                linear-gradient(135deg, #211d2d, #111116);
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #c29cff;
+        }
+
+        .hero p {
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* ---------- MOODS ---------- */
+
+        .section {
+            margin-top: 45px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 25px;
+        }
+
+        .see-all {
+            color: #a979ff;
+            cursor: pointer;
+        }
+
+        .moods {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .mood {
+            min-width: 120px;
+            padding: 17px;
+            border-radius: 16px;
+            background: #191920;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .mood:hover {
+            transform: translateY(-4px);
+            border-color: #8e61d8;
+        }
+
+        .mood-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .mood-name {
+            color: #ddd;
+        }
+
+        /* ---------- SONG CARDS ---------- */
+
+        .songs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .song-card {
+            background: #17171e;
+            padding: 15px;
+            border-radius: 18px;
+            transition: 0.3s;
+            border: 1px solid #24242c;
+        }
+
+        .song-card:hover {
+            transform: translateY(-6px);
+            background: #1d1b25;
+        }
+
+        .cover {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 14px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .song-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .song-name {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .artist {
+            color: #777;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+        .like {
+            font-size: 20px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .like.liked {
+            color: #ff6f91;
+        }
+
+        .mood-description {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 15px 0;
+            min-height: 40px;
+        }
+
+        .play-btn {
+            width: 100%;
+            border: none;
+            padding: 11px;
+            border-radius: 10px;
+            background: #9b6cff;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .play-btn:hover {
+            background: #b18aff;
+        }
+
+        /* ---------- PLAYER ---------- */
+
+        .player {
+            position: fixed;
+            bottom: 0;
+            left: 230px;
+            right: 0;
+            height: 85px;
+            background: rgba(18, 18, 24, 0.97);
+            border-top: 1px solid #292932;
+            display: flex;
+            align-items: center;
+            padding: 12px 30px;
+            gap: 25px;
+            backdrop-filter: blur(15px);
+        }
+
+        .player-cover {
+            width: 58px;
+            height: 58px;
+            border-radius: 9px;
+            object-fit: cover;
+        }
+
+        .player-info {
+            width: 200px;
+        }
+
+        .player-title {
+            font-weight: bold;
+        }
+
+        .player-artist {
+            color: #777;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .control {
+            border: none;
+            background: none;
+            color: white;
+            font-size: 21px;
+            cursor: pointer;
+        }
+
+        .main-play {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            color: black;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .progress-container {
+            flex: 1;
+        }
+
+        .progress {
+            width: 100%;
+            accent-color: #a477ff;
+            cursor: pointer;
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 10px;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media(max-width: 800px) {
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 25px 20px 120px;
+            }
+
+            .player {
+                left: 0;
+                padding: 10px 15px;
+            }
+
+            .player-info {
+                width: 120px;
+            }
+
+            .search {
+                width: 200px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            MUS<span>EN</span>
+        </div>
+
+        <div class="menu-title">Menu</div>
+
+        <div class="menu-item active">🏠 Home</div>
+        <div class="menu-item">🎵 Discover</div>
+        <div class="menu-item">💗 Liked Songs</div>
+        <div class="menu-item">📚 Your Library</div>
+
+        <div class="menu-title">Your Mood</div>
+
+        <div class="menu-item">🌙 Late Night</div>
+        <div class="menu-item">💔 Heartbreak</div>
+        <div class="menu-item">⚡ Energy</div>
+        <div class="menu-item">☁️ Chill</div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <input
+                type="text"
+                class="search"
+                id="search"
+                placeholder="Search songs, artists or moods..."
+            >
+
+            <div class="profile">
+                ✨ Music lover
+            </div>
+
+        </div>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <h1>
+                    Music for your
+                    <span>mood.</span>
+                </h1>
+
+                <p>
+                    Sometimes you don't need a song.
+                    You need a feeling.
+                    Discover music based on exactly how
+                    you feel right now.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- MOODS -->
+
+        <section class="section">
+
+            <div class="section-header">
+                <h2>What's your mood?</h2>
+            </div>
+
+            <div class="moods">
+
+                <div class="mood" onclick="filterMood('All')">
+                    <div class="mood-icon">✨</div>
+                    <div class="mood-name">All</div>
+                </div>
+
+                <div class="mood" onclick="filterMood('Happy')">
+                    <div class="mood-icon">☀️</div>
+                    <div class="mood-name">Happy</div>
+                </div>
+
+                <div class="mood" onclick="filterMood('Chill')">
+                    <div class="mood-icon">☁️</div>
+                    <div class="mood-name">Chill</div>
+                </div>
+
+                <div class="mood" onclick="filterMood('Sad')">
+                    <div class="mood-icon">🌧️</div>
+                    <div class="mood-name">Sad</div>
+                </div>
+
+                <div class="mood" onclick="filterMood('Romantic')">
+                    <div class="mood-icon">💗</div>
+                    <div class="mood-name">Romantic</div>
+                </div>
+
+                <div class="mood" onclick="filterMood('Energy')">
+                    <div class="mood-icon">⚡</div>
+                    <div class="mood-name">Energy</div>
+                </div>
+
+                <div class="mood" onclick="filterMood('Night')">
+                    <div class="mood-icon">🌙</div>
+                    <div class="mood-name">Night</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SONGS -->
+
+        <section class="section">
+
+            <div class="section-header">
+                <h2>For your current vibe</h2>
+                <div class="see-all">See all</div>
+            </div>
+
+            <div class="songs" id="songContainer"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PLAYER -->
+
+    <div class="player">
+
+        <img
+            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=500"
+            class="player-cover"
+            id="playerCover"
+        >
+
+        <div class="player-info">
+
+            <div class="player-title" id="playerTitle">
+                Nothing playing
+            </div>
+
+            <div class="player-artist" id="playerArtist">
+                Choose a song
+            </div>
+
+        </div>
+
+        <div class="controls">
+
+            <button class="control">⏮</button>
+
+            <button
+                class="main-play"
+                id="playButton"
+                onclick="togglePlay()"
+            >
+                ▶
+            </button>
+
+            <button class="control">⏭</button>
+
+        </div>
+
+        <div class="progress-container">
+
+            <input
+                type="range"
+                class="progress"
+                id="progress"
+                value="0"
+                min="0"
+                max="100"
+            >
+
+            <div class="time">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* ---------------- SONG DATA ---------------- */
+
+        const songs = [
+
+            {
+                title: "Golden Hour",
+                artist: "JVKE",
+                mood: "Happy",
+                description:
+                    "For those moments when everything suddenly feels beautiful.",
+                cover:
+                    "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600"
+            },
+
+            {
+                title: "Until I Found You",
+                artist: "Stephen Sanchez",
+                mood: "Romantic",
+                description:
+                    "Soft, nostalgic and ridiculously romantic — for your person.",
+                cover:
+                    "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600"
+            },
+
+            {
+                title: "Space Song",
+                artist: "Beach House",
+                mood: "Night",
+                description:
+                    "For staring at the ceiling at 2 AM and thinking about everything.",
+                cover:
+                    "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600"
+            },
+
+            {
+                title: "I Wanna Be Yours",
+                artist: "Arctic Monkeys",
+                mood: "Romantic",
+                description:
+                    "For when you want to love someone quietly and completely.",
+                cover:
+                    "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600"
+            },
+
+            {
+                title: "Sunflower",
+                artist: "Post Malone",
+                mood: "Happy",
+                description:
+                    "Warm, carefree and perfect for a slow sunny afternoon.",
+                cover:
+                    "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=600"
+            },
+
+            {
+                title: "Another Love",
+                artist: "Tom Odell",
+                mood: "Sad",
+                description:
+                    "For when you're emotionally exhausted but still can't let go.",
+                cover:
+                    "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600"
+            },
+
+            {
+                title: "Die With A Smile",
+                artist: "Lady Gaga & Bruno Mars",
+                mood: "Romantic",
+                description:
+                    "That dramatic 'it's us against the world' kind of feeling.",
+                cover:
+                    "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=600"
+            },
+
+            {
+                title: "Blinding Lights",
+                artist: "The Weeknd",
+                mood: "Energy",
+                description:
+                    "Instant main-character energy. Put your headphones on and GO.",
+                cover:
+                    "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600"
+            },
+
+            {
+                title: "Until the End",
+                artist: "Dreamy Nights",
+                mood: "Chill",
+                description:
+                    "A quiet soundtrack for doing absolutely nothing.",
+                cover:
+                    "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=600"
+            }
+
+        ];
+
+
+        let currentSong = null;
+        let isPlaying = false;
+
+
+        /* ---------------- DISPLAY SONGS ---------------- */
+
+        function displaySongs(songList) {
+
+            const container =
+                document.getElementById("songContainer");
+
+            container.innerHTML = "";
+
+            songList.forEach((song, index) => {
+
+                const card = document.createElement("div");
+
+                card.className = "song-card";
+
+                card.innerHTML = `
+
+                    <img
+                        src="${song.cover}"
+                        class="cover"
+                    >
+
+                    <div class="song-info">
+
+                        <div>
+                            <div class="song-name">
+                                ${song.title}
+                            </div>
+
+                            <div class="artist">
+                                ${song.artist}
+                            </div>
+                        </div>
+
+                        <div
+                            class="like"
+                            onclick="likeSong(this)"
+                        >
+                            ♡
+                        </div>
+
+                    </div>
+
+                    <div class="mood-description">
+                        "${song.description}"
+                    </div>
+
+                    <button
+                        class="play-btn"
+                        onclick="playSong(${index})"
+                    >
+                        ▶ Play
+                    </button>
+
+                `;
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+        displaySongs(songs);
+
+
+        /* ---------------- PLAY SONG ---------------- */
+
+        function playSong(index) {
+
+            currentSong = songs[index];
+
+            document.getElementById("playerTitle")
+                .textContent = currentSong.title;
+
+            document.getElementById("playerArtist")
+                .textContent = currentSong.artist;
+
+            document.getElementById("playerCover")
+                .src = currentSong.cover;
+
+            isPlaying = true;
+
+            document.getElementById("playButton")
+                .textContent = "❚❚";
+
+        }
+
+
+        /* ---------------- PLAY / PAUSE ---------------- */
+
+        function togglePlay() {
+
+            if (!currentSong) {
+
+                alert("Choose a song first 🎵");
+
+                return;
+
+            }
+
+            isPlaying = !isPlaying;
+
+            document.getElementById("playButton")
+                .textContent =
+                isPlaying ? "❚❚" : "▶";
+
+        }
+
+
+        /* ---------------- LIKE ---------------- */
+
+        function likeSong(element) {
+
+            element.classList.toggle("liked");
+
+            element.textContent =
+                element.classList.contains("liked")
+                ? "♥"
+                : "♡";
+
+        }
+
+
+        /* ---------------- MOOD FILTER ---------------- */
+
+        function filterMood(mood) {
+
+            if (mood === "All") {
+
+                displaySongs(songs);
+
+                return;
+
+            }
+
+            const filtered =
+                songs.filter(song =>
+                    song.mood === mood
+                );
+
+            displaySongs(filtered);
+
+        }
+
+
+        /* ---------------- SEARCH ---------------- */
+
+        document
+            .getElementById("search")
+            .addEventListener("input", function () {
+
+                const search =
+                    this.value.toLowerCase();
+
+                const filtered =
+                    songs.filter(song =>
+
+                        song.title
+                            .toLowerCase()
+                            .includes(search)
+
+                        ||
+
+                        song.artist
+                            .toLowerCase()
+                            .includes(search)
+
+                        ||
+
+                        song.mood
+                            .toLowerCase()
+                            .includes(search)
+
+                        ||
+
+                        song.description
+                            .toLowerCase()
+                            .includes(search)
+
+                    );
+
+                displaySongs(filtered);
+
+            });
+
+
+    </script>
+
+</body>
+</html>
+```
