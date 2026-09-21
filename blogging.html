@@ -3,20 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Blog</title>
+  <title>My Dynamic Blog</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Header -->
   <header class="site-header">
     <div class="container header-content">
-      <a href="#" class="logo">My Blog</a>
+      <a href="#" class="logo">My Dynamic Blog</a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
       <nav class="main-nav" id="mainNav">
         <ul>
@@ -29,11 +35,22 @@
     </div>
   </header>
 
-  <!-- Hero / Intro -->
+  <!-- Hero -->
   <section class="hero" id="home">
     <div class="container">
-      <h1>Welcome to My Blog</h1>
-      <p>Thoughts, tutorials, and stories on tech, life, and learning.</p>
+      <h1>Welcome to My Dynamic Blog</h1>
+      <p>Interactive posts, live search, filters, and more.</p>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search posts by title or content..."
+          aria-label="Search posts"
+        />
+        <span class="search-icon">🔎</span>
+      </div>
     </div>
   </section>
 
@@ -41,43 +58,50 @@
   <main class="container main-layout">
     <!-- Blog Posts -->
     <section class="blog-posts" id="blogPosts">
-      <!-- Posts will be injected here by JavaScript -->
+      <!-- Posts injected by JavaScript -->
     </section>
 
     <!-- Sidebar -->
     <aside class="sidebar" id="categories">
       <div class="sidebar-widget">
         <h3>Categories</h3>
-        <ul class="category-list">
-          <li><a href="#" data-category="all">All</a></li>
-          <li><a href="#" data-category="tech">Tech</a></li>
-          <li><a href="#" data-category="life">Life</a></li>
-          <li><a href="#" data-category="study">Study</a></li>
-        </ul>
+        <div class="category-buttons">
+          <button class="category-btn active" data-category="all">All</button>
+          <button class="category-btn" data-category="tech">Tech</button>
+          <button class="category-btn" data-category="life">Life</button>
+          <button class="category-btn" data-category="study">Study</button>
+        </div>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3>Stats</h3>
+        <p>Total posts: <strong id="totalPosts">0</strong></p>
+        <p>Showing: <strong id="visiblePosts">0</strong></p>
       </div>
 
       <div class="sidebar-widget">
         <h3>About This Blog</h3>
         <p>
-          A simple blogging website where I share notes, projects, and ideas.
-          New posts appear at the top.
+          A dynamic, interactive blogging website. Posts update instantly as you
+          search and filter. Likes are saved in your browser.
         </p>
       </div>
     </aside>
   </main>
 
-  <!-- About Section -->
+  <!-- About -->
   <section class="about-section" id="about">
     <div class="container">
       <h2>About Me</h2>
       <p>
-        Hi! I’m a student who loves writing about technology, study tips, and
-        everyday experiences. This blog is my space to learn in public.
+        I’m a student who loves building things on the web. This blog is my
+        playground for experimenting with interactive UIs and sharing what I
+        learn.
       </p>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section class="contact-section" id="contact">
     <div class="container">
       <h2>Contact</h2>
@@ -91,7 +115,7 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2026 My Blog. Built with HTML, CSS, and JavaScript.</p>
+      <p>&copy; 2026 My Dynamic Blog. Built with HTML, CSS, and JavaScript.</p>
     </div>
   </footer>
 
