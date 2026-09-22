@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Motion Studio - Animation Maker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">✨ Motion Studio</div>
+
+        <div class="header-buttons">
+            <button onclick="saveProject()">💾 Save</button>
+            <button onclick="loadProject()">📂 Load</button>
+            <button onclick="exportProject()">⬇ Export</button>
+        </div>
+    </header>
+
+
+    <div class="app">
+
+        <!-- LEFT TOOLBAR -->
+
+        <aside class="sidebar">
+
+            <h3>Objects</h3>
+
+            <button onclick="addCircle()">🔵 Circle</button>
+
+            <button onclick="addRectangle()">⬛ Rectangle</button>
+
+            <button onclick="addText()">🔤 Text</button>
+
+            <hr>
+
+            <h3>Properties</h3>
+
+            <label>Color</label>
+
+            <input
+                type="color"
+                id="colorPicker"
+                value="#6c63ff"
+                onchange="changeColor()"
+            >
+
+            <label>Size</label>
+
+            <input
+                type="range"
+                id="sizeSlider"
+                min="20"
+                max="200"
+                value="80"
+                oninput="changeSize()"
+            >
+
+            <button class="delete-btn" onclick="deleteObject()">
+                🗑 Delete
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN AREA -->
+
+        <main>
+
+            <div class="toolbar">
+
+                <button onclick="playAnimation()">▶ Play</button>
+
+                <button onclick="pauseAnimation()">⏸ Pause</button>
+
+                <button onclick="resetAnimation()">🔄 Reset</button>
+
+                <span id="timeDisplay">0.0s</span>
+
+            </div>
+
+
+            <!-- CANVAS -->
+
+            <div class="canvas-container">
+
+                <canvas
+                    id="canvas"
+                    width="900"
+                    height="500">
+                </canvas>
+
+            </div>
+
+
+            <!-- TIMELINE -->
+
+            <section class="timeline">
+
+                <div class="timeline-header">
+
+                    <h3>Timeline</h3>
+
+                    <button onclick="addKeyframe()">
+                        ➕ Add Keyframe
+                    </button>
+
+                </div>
+
+                <div class="track">
+
+                    <div class="track-label">
+                        Animation
+                    </div>
+
+                    <div
+                        class="keyframes"
+                        id="keyframes">
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
