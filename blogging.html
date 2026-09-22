@@ -1,124 +1,2116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Dynamic Blog</title>
-  <link rel="stylesheet" href="interface.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>InkFlow | Stories Worth Reading</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #f8f9fc;
+            --card: #ffffff;
+            --text: #172033;
+            --muted: #6b7280;
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --border: #e5e7eb;
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --border: #334155;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.3s;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 16px 7%;
+
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        body.dark nav {
+            background: rgba(15,23,42,0.9);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .theme-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .write-btn {
+            padding: 10px 18px;
+            border-radius: 20px;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 25px;
+            background: none;
+            color: var(--text);
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 80vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 80px 7%;
+
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            animation: slideUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 80px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .primary-btn {
+            padding: 14px 25px;
+            border-radius: 30px;
+            background: var(--primary);
+            color: white;
+        }
+
+        .secondary-btn {
+            padding: 14px 25px;
+            border-radius: 30px;
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        /* Floating visual */
+
+        .hero-visual {
+            width: 420px;
+            height: 420px;
+            position: relative;
+        }
+
+        .floating-card {
+            position: absolute;
+
+            width: 230px;
+            padding: 20px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+
+            animation: floating 4s infinite ease-in-out;
+        }
+
+        .card1 {
+            top: 20px;
+            right: 30px;
+        }
+
+        .card2 {
+            bottom: 50px;
+            left: 20px;
+            animation-delay: 1s;
+        }
+
+        .floating-card h3 {
+            margin: 10px 0;
+        }
+
+        .floating-card p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* ================= SECTIONS ================= */
+
+        section {
+            padding: 80px 7%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 35px;
+        }
+
+        /* ================= ADS ================= */
+
+        .ad {
+            margin: 30px auto;
+            max-width: 900px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            background: linear-gradient(
+                135deg,
+                #eef2ff,
+                #f5f3ff
+            );
+
+            border: 1px dashed #a5b4fc;
+
+            color: #6366f1;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+        }
+
+        body.dark .ad {
+            background: #172554;
+        }
+
+        /* ================= BLOG GRID ================= */
+
+        .blog-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .blog-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            transition: 0.35s;
+
+            animation: fadeIn 0.7s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .blog-image {
+            height: 200px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 55px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #c7d2fe,
+                    #ddd6fe
+                );
+        }
+
+        .blog-content {
+            padding: 22px;
+        }
+
+        .category {
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background: #eef2ff;
+
+            color: #6366f1;
+
+            font-size: 12px;
+
+            margin-bottom: 12px;
+        }
+
+        .blog-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .blog-content p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 18px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        .blog-actions {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 18px;
+        }
+
+        .read-btn {
+            color: var(--primary);
+            background: none;
+            font-weight: bold;
+        }
+
+        .like-btn,
+        .bookmark-btn {
+            background: none;
+            font-size: 18px;
+            margin-left: 8px;
+        }
+
+        /* ================= TRENDING ================= */
+
+        .trending {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .trend-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            transition: 0.3s;
+        }
+
+        .trend-item:hover {
+            transform: translateX(8px);
+        }
+
+        .rank {
+            font-size: 35px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* ================= CATEGORY ================= */
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .category-btn {
+            padding: 12px 20px;
+
+            border-radius: 30px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            color: var(--text);
+
+            transition: 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            flex: 1;
+
+            padding: 15px 20px;
+
+            border-radius: 30px;
+
+            border: 1px solid var(--border);
+
+            background: var(--card);
+
+            color: var(--text);
+
+            outline: none;
+        }
+
+        /* ================= NEWSLETTER ================= */
+
+        .newsletter {
+            text-align: center;
+
+            padding: 70px 20px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #8b5cf6
+                );
+
+            color: white;
+        }
+
+        .newsletter h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+
+            max-width: 500px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 5px;
+
+            border-radius: 30px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+
+            border: none;
+
+            outline: none;
+
+            padding: 12px 20px;
+
+            border-radius: 30px;
+        }
+
+        .newsletter-form button {
+            padding: 12px 22px;
+
+            border-radius: 25px;
+
+            background: #111827;
+
+            color: white;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            padding: 60px 7%;
+
+            background: var(--card);
+
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr;
+
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer a {
+            color: var(--muted);
+            line-height: 2;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+
+            margin-top: 40px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--muted);
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 2000;
+
+            background: rgba(0,0,0,0.7);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 800px;
+
+            width: 100%;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: var(--card);
+
+            color: var(--text);
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            position: relative;
+
+            animation: modalIn 0.4s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+
+            right: 20px;
+            top: 15px;
+
+            background: none;
+
+            color: var(--text);
+
+            font-size: 25px;
+        }
+
+        .modal-content h2 {
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            line-height: 1.8;
+
+            color: var(--muted);
+
+            margin: 15px 0;
+        }
+
+        /* ================= TOAST ================= */
+
+        .toast {
+            position: fixed;
+
+            right: 25px;
+
+            bottom: 25px;
+
+            background: #111827;
+
+            color: white;
+
+            padding: 15px 20px;
+
+            border-radius: 10px;
+
+            transform: translateY(100px);
+
+            transition: 0.3s;
+
+            z-index: 3000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+
+        /* ================= ANIMATIONS ================= */
+
+        @keyframes floating {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes slideUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalIn {
+
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 900px) {
+
+            .blog-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 60px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media(max-width: 650px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                display: none;
+
+                position: absolute;
+
+                top: 70px;
+                left: 0;
+
+                width: 100%;
+
+                padding: 20px;
+
+                background: var(--card);
+
+                flex-direction: column;
+
+                text-align: center;
+
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .write-btn {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 5%;
+            }
+
+            .hero-visual {
+                width: 320px;
+                height: 320px;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trending {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                background: transparent;
+                gap: 10px;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-content">
-      <a href="#" class="logo">My Dynamic Blog</a>
 
-      <div class="header-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <span class="theme-icon">🌙</span>
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        ✦ InkFlow
+    </div>
+
+    <button class="menu-btn" id="menuBtn">
+        ☰
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#featured">Featured</a></li>
+
+        <li><a href="#trending">Trending</a></li>
+
+        <li><a href="#categories">Categories</a></li>
+
+        <li><a href="#discover">Explore</a></li>
+
+    </ul>
+
+    <div class="nav-actions">
+
+        <button class="theme-btn" id="themeBtn">
+            🌙
         </button>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button class="write-btn" onclick="showToast('Blog editor coming soon!')">
+            Write a Blog
         </button>
-      </div>
 
-      <nav class="main-nav" id="mainNav">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#categories">Categories</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
     </div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="container">
-      <h1>Welcome to My Dynamic Blog</h1>
-      <p>Interactive posts, live search, filters, and more.</p>
+</nav>
 
-      <!-- Search Bar -->
-      <div class="search-wrapper">
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="Search posts by title or content..."
-          aria-label="Search posts"
-        />
-        <span class="search-icon">🔎</span>
-      </div>
-    </div>
-  </section>
 
-  <!-- Main Content -->
-  <main class="container main-layout">
-    <!-- Blog Posts -->
-    <section class="blog-posts" id="blogPosts">
-      <!-- Posts injected by JavaScript -->
-    </section>
+<!-- ================= HERO ================= -->
 
-    <!-- Sidebar -->
-    <aside class="sidebar" id="categories">
-      <div class="sidebar-widget">
-        <h3>Categories</h3>
-        <div class="category-buttons">
-          <button class="category-btn active" data-category="all">All</button>
-          <button class="category-btn" data-category="tech">Tech</button>
-          <button class="category-btn" data-category="life">Life</button>
-          <button class="category-btn" data-category="study">Study</button>
-        </div>
-      </div>
+<section class="hero" id="home">
 
-      <div class="sidebar-widget">
-        <h3>Stats</h3>
-        <p>Total posts: <strong id="totalPosts">0</strong></p>
-        <p>Showing: <strong id="visiblePosts">0</strong></p>
-      </div>
+    <div class="hero-content">
 
-      <div class="sidebar-widget">
-        <h3>About This Blog</h3>
+        <h1>
+            Stories Worth
+            <span>Reading.</span>
+        </h1>
+
         <p>
-          A dynamic, interactive blogging website. Posts update instantly as you
-          search and filter. Likes are saved in your browser.
+            Discover thoughtful stories, fresh perspectives,
+            technology, lifestyle and ideas from curious minds
+            around the world.
         </p>
-      </div>
-    </aside>
-  </main>
 
-  <!-- About -->
-  <section class="about-section" id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>
-        I’m a student who loves building things on the web. This blog is my
-        playground for experimenting with interactive UIs and sharing what I
-        learn.
-      </p>
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="document.getElementById('discover').scrollIntoView()"
+            >
+                Explore Blogs →
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="showToast('Writing feature coming soon!')"
+            >
+                Start Writing
+            </button>
+
+        </div>
+
     </div>
-  </section>
 
-  <!-- Contact -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>
-        Want to collaborate or just say hi? Reach out via email or social media.
-      </p>
-      <p>Email: youremail@example.com</p>
+
+    <div class="hero-visual">
+
+        <div class="floating-card card1">
+
+            <span>🚀 Technology</span>
+
+            <h3>
+                The Future of Artificial Intelligence
+            </h3>
+
+            <p>
+                6 min read · 2.4K views
+            </p>
+
+        </div>
+
+
+        <div class="floating-card card2">
+
+            <span>🌱 Lifestyle</span>
+
+            <h3>
+                Building Better Daily Habits
+            </h3>
+
+            <p>
+                4 min read · 1.8K views
+            </p>
+
+        </div>
+
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2026 My Dynamic Blog. Built with HTML, CSS, and JavaScript.</p>
+</section>
+
+
+<!-- ================= AD ================= -->
+
+<div class="ad">
+
+    ADVERTISEMENT · 970 × 90
+
+</div>
+
+
+<!-- ================= FEATURED ================= -->
+
+<section id="featured">
+
+    <div class="section-header">
+
+        <h2>
+            Editor's Picks
+        </h2>
+
+        <span>
+            ✨ Handpicked stories
+        </span>
+
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+
+    <div class="blog-grid" id="blogGrid">
+
+        <!-- Blog 1 -->
+
+        <article
+            class="blog-card"
+            data-category="Technology"
+        >
+
+            <div class="blog-image">
+                🤖
+            </div>
+
+            <div class="blog-content">
+
+                <span class="category">
+                    Technology
+                </span>
+
+                <h3>
+                    How AI Is Changing the Way We Work
+                </h3>
+
+                <p>
+                    Artificial intelligence is transforming
+                    productivity, creativity and modern workplaces.
+                </p>
+
+                <div class="blog-meta">
+
+                    <span>
+                        👤 Aisha Khan
+                    </span>
+
+                    <span>
+                        6 min read
+                    </span>
+
+                </div>
+
+                <div class="blog-actions">
+
+                    <button
+                        class="read-btn"
+                        onclick="openBlog(
+                        'How AI Is Changing the Way We Work',
+                        'Technology'
+                        )"
+                    >
+                        Read More →
+                    </button>
+
+                    <div>
+
+                        <button
+                            class="like-btn"
+                            onclick="likePost(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkPost(this)"
+                        >
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Blog 2 -->
+
+        <article
+            class="blog-card"
+            data-category="Lifestyle"
+        >
+
+            <div class="blog-image">
+                🌱
+            </div>
+
+            <div class="blog-content">
+
+                <span class="category">
+                    Lifestyle
+                </span>
+
+                <h3>
+                    7 Tiny Habits That Changed My Life
+                </h3>
+
+                <p>
+                    Small daily improvements can create
+                    meaningful long-term changes.
+                </p>
+
+                <div class="blog-meta">
+
+                    <span>
+                        👤 Emma Wilson
+                    </span>
+
+                    <span>
+                        4 min read
+                    </span>
+
+                </div>
+
+                <div class="blog-actions">
+
+                    <button
+                        class="read-btn"
+                        onclick="openBlog(
+                        '7 Tiny Habits That Changed My Life',
+                        'Lifestyle'
+                        )"
+                    >
+                        Read More →
+                    </button>
+
+                    <div>
+
+                        <button
+                            class="like-btn"
+                            onclick="likePost(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkPost(this)"
+                        >
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Blog 3 -->
+
+        <article
+            class="blog-card"
+            data-category="Travel"
+        >
+
+            <div class="blog-image">
+                🌍
+            </div>
+
+            <div class="blog-content">
+
+                <span class="category">
+                    Travel
+                </span>
+
+                <h3>
+                    Finding Yourself While Travelling
+                </h3>
+
+                <p>
+                    Sometimes changing your surroundings helps
+                    you discover a different version of yourself.
+                </p>
+
+                <div class="blog-meta">
+
+                    <span>
+                        👤 Daniel Lee
+                    </span>
+
+                    <span>
+                        5 min read
+                    </span>
+
+                </div>
+
+                <div class="blog-actions">
+
+                    <button
+                        class="read-btn"
+                        onclick="openBlog(
+                        'Finding Yourself While Travelling',
+                        'Travel'
+                        )"
+                    >
+                        Read More →
+                    </button>
+
+                    <div>
+
+                        <button
+                            class="like-btn"
+                            onclick="likePost(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkPost(this)"
+                        >
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Blog 4 -->
+
+        <article
+            class="blog-card"
+            data-category="Programming"
+        >
+
+            <div class="blog-image">
+                💻
+            </div>
+
+            <div class="blog-content">
+
+                <span class="category">
+                    Programming
+                </span>
+
+                <h3>
+                    Why Every Student Should Learn Git
+                </h3>
+
+                <p>
+                    Version control is one of the most useful
+                    skills for students entering software development.
+                </p>
+
+                <div class="blog-meta">
+
+                    <span>
+                        👤 Noah Smith
+                    </span>
+
+                    <span>
+                        7 min read
+                    </span>
+
+                </div>
+
+                <div class="blog-actions">
+
+                    <button
+                        class="read-btn"
+                        onclick="openBlog(
+                        'Why Every Student Should Learn Git',
+                        'Programming'
+                        )"
+                    >
+                        Read More →
+                    </button>
+
+                    <div>
+
+                        <button
+                            class="like-btn"
+                            onclick="likePost(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkPost(this)"
+                        >
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Blog 5 -->
+
+        <article
+            class="blog-card"
+            data-category="Productivity"
+        >
+
+            <div class="blog-image">
+                ⏳
+            </div>
+
+            <div class="blog-content">
+
+                <span class="category">
+                    Productivity
+                </span>
+
+                <h3>
+                    The Art of Doing Less
+                </h3>
+
+                <p>
+                    Productivity is not about doing everything.
+                    It is about doing what actually matters.
+                </p>
+
+                <div class="blog-meta">
+
+                    <span>
+                        👤 Sophia Brown
+                    </span>
+
+                    <span>
+                        5 min read
+                    </span>
+
+                </div>
+
+                <div class="blog-actions">
+
+                    <button
+                        class="read-btn"
+                        onclick="openBlog(
+                        'The Art of Doing Less',
+                        'Productivity'
+                        )"
+                    >
+                        Read More →
+                    </button>
+
+                    <div>
+
+                        <button
+                            class="like-btn"
+                            onclick="likePost(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkPost(this)"
+                        >
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Blog 6 -->
+
+        <article
+            class="blog-card"
+            data-category="Education"
+        >
+
+            <div class="blog-image">
+                📚
+            </div>
+
+            <div class="blog-content">
+
+                <span class="category">
+                    Education
+                </span>
+
+                <h3>
+                    How to Study Smarter
+                </h3>
+
+                <p>
+                    Replace endless hours of studying with
+                    strategies based on active recall and practice.
+                </p>
+
+                <div class="blog-meta">
+
+                    <span>
+                        👤 Olivia Martin
+                    </span>
+
+                    <span>
+                        6 min read
+                    </span>
+
+                </div>
+
+                <div class="blog-actions">
+
+                    <button
+                        class="read-btn"
+                        onclick="openBlog(
+                        'How to Study Smarter',
+                        'Education'
+                        )"
+                    >
+                        Read More →
+                    </button>
+
+                    <div>
+
+                        <button
+                            class="like-btn"
+                            onclick="likePost(this)"
+                        >
+                            ♡
+                        </button>
+
+                        <button
+                            class="bookmark-btn"
+                            onclick="bookmarkPost(this)"
+                        >
+                            🔖
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRENDING ================= -->
+
+<section id="trending">
+
+    <div class="section-header">
+
+        <h2>
+            Trending This Week
+        </h2>
+
+    </div>
+
+
+    <div class="trending">
+
+        <div class="trend-item">
+
+            <div class="rank">
+                01
+            </div>
+
+            <div>
+
+                <h3>
+                    The Future of Remote Work
+                </h3>
+
+                <p>
+                    12.4K views · 8 min read
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="trend-item">
+
+            <div class="rank">
+                02
+            </div>
+
+            <div>
+
+                <h3>
+                    Is AI Replacing Programmers?
+                </h3>
+
+                <p>
+                    9.8K views · 7 min read
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="trend-item">
+
+            <div class="rank">
+                03
+            </div>
+
+            <div>
+
+                <h3>
+                    How to Build a Personal Brand
+                </h3>
+
+                <p>
+                    7.5K views · 6 min read
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="trend-item">
+
+            <div class="rank">
+                04
+            </div>
+
+            <div>
+
+                <h3>
+                    The Psychology of Habits
+                </h3>
+
+                <p>
+                    6.2K views · 5 min read
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= AD ================= -->
+
+<div class="ad">
+
+    ADVERTISEMENT · Sponsored Content
+
+</div>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section id="categories">
+
+    <div class="section-header">
+
+        <h2>
+            Explore Categories
+        </h2>
+
+    </div>
+
+
+    <div class="categories">
+
+        <button
+            class="category-btn active"
+            onclick="filterCategory('all',this)"
+        >
+            All
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Technology',this)"
+        >
+            Technology
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Programming',this)"
+        >
+            Programming
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Lifestyle',this)"
+        >
+            Lifestyle
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Travel',this)"
+        >
+            Travel
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Productivity',this)"
+        >
+            Productivity
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Education',this)"
+        >
+            Education
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DISCOVER ================= -->
+
+<section id="discover">
+
+    <div class="section-header">
+
+        <h2>
+            Discover Your Next Read
+        </h2>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search blogs..."
+        >
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section>
+
+    <div class="newsletter">
+
+        <h2>
+            Never Miss a Good Story.
+        </h2>
+
+        <p>
+            Get thoughtful stories delivered directly
+            to your inbox.
+        </p>
+
+
+        <form
+            class="newsletter-form"
+            id="newsletterForm"
+        >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="logo">
+                ✦ InkFlow
+            </div>
+
+            <p>
+                Stories, ideas and perspectives
+                from curious minds.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+                <a href="#featured">
+                    Featured
+                </a>
+            </p>
+
+            <p>
+                <a href="#trending">
+                    Trending
+                </a>
+            </p>
+
+            <p>
+                <a href="#categories">
+                    Categories
+                </a>
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Company
+            </h3>
+
+            <p>
+                <a href="#">
+                    About
+                </a>
+            </p>
+
+            <p>
+                <a href="#">
+                    Contact
+                </a>
+            </p>
+
+            <p>
+                <a href="#">
+                    Careers
+                </a>
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Follow
+            </h3>
+
+            <p>
+                Instagram
+            </p>
+
+            <p>
+                LinkedIn
+            </p>
+
+            <p>
+                GitHub
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 InkFlow. All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= BLOG MODAL ================= -->
+
+<div
+    class="modal"
+    id="blogModal"
+>
+
+    <div class="modal-content">
+
+        <button
+            class="close-modal"
+            onclick="closeBlog()"
+        >
+            ×
+        </button>
+
+        <span
+            class="category"
+            id="modalCategory"
+        >
+        </span>
+
+        <h2 id="modalTitle">
+        </h2>
+
+        <p>
+            <strong>
+                By InkFlow Editorial Team
+            </strong>
+        </p>
+
+        <p>
+            Modern life is changing rapidly, and the
+            stories we tell help us understand those changes.
+            This article explores ideas, experiences and
+            perspectives that can help us look at everyday
+            challenges differently.
+        </p>
+
+        <p>
+            Whether you are learning a new skill, exploring
+            technology, improving your lifestyle or simply
+            looking for a different perspective, thoughtful
+            writing can provide valuable insights.
+        </p>
+
+        <p>
+            Keep exploring, keep questioning and keep
+            learning. Every story has the potential to
+            change the way we see the world.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div
+    class="toast"
+    id="toast"
+>
+</div>
+
+
+<script>
+
+    /* ================= MOBILE MENU ================= */
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const navLinks =
+        document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+    /* ================= DARK MODE ================= */
+
+    const themeBtn =
+        document.getElementById("themeBtn");
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        if(document.body.classList.contains("dark")) {
+
+            themeBtn.textContent = "☀️";
+
+        } else {
+
+            themeBtn.textContent = "🌙";
+
+        }
+
+    });
+
+
+    /* ================= CATEGORY FILTER ================= */
+
+    function filterCategory(category, button) {
+
+        const cards =
+            document.querySelectorAll(".blog-card");
+
+        document
+            .querySelectorAll(".category-btn")
+            .forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+        button.classList.add("active");
+
+
+        cards.forEach(card => {
+
+            const cardCategory =
+                card.dataset.category;
+
+            if(
+                category === "all" ||
+                cardCategory === category
+            ) {
+
+                card.style.display = "block";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* ================= SEARCH ================= */
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    searchInput.addEventListener(
+        "input",
+        function() {
+
+            const search =
+                this.value.toLowerCase();
+
+            const cards =
+                document.querySelectorAll(".blog-card");
+
+            cards.forEach(card => {
+
+                const text =
+                    card.textContent.toLowerCase();
+
+                if(text.includes(search)) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+    );
+
+
+    /* ================= LIKE ================= */
+
+    function likePost(button) {
+
+        if(button.textContent === "♡") {
+
+            button.textContent = "♥";
+
+            showToast("❤️ Blog liked!");
+
+        } else {
+
+            button.textContent = "♡";
+
+        }
+
+    }
+
+
+    /* ================= BOOKMARK ================= */
+
+    function bookmarkPost(button) {
+
+        button.classList.toggle("saved");
+
+        if(button.classList.contains("saved")) {
+
+            button.textContent = "🔖";
+
+            showToast("🔖 Blog saved!");
+
+        } else {
+
+            showToast("Bookmark removed");
+
+        }
+
+    }
+
+
+    /* ================= BLOG MODAL ================= */
+
+    function openBlog(title, category) {
+
+        document.getElementById(
+            "modalTitle"
+        ).textContent = title;
+
+        document.getElementById(
+            "modalCategory"
+        ).textContent = category;
+
+        document
+            .getElementById("blogModal")
+            .classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeBlog() {
+
+        document
+            .getElementById("blogModal")
+            .classList.remove("active");
+
+        document.body.style.overflow = "auto";
+
+    }
+
+
+    /* Close modal when clicking outside */
+
+    document
+        .getElementById("blogModal")
+        .addEventListener("click", function(e) {
+
+            if(e.target === this) {
+
+                closeBlog();
+
+            }
+
+        });
+
+
+    /* ================= TOAST ================= */
+
+    function showToast(message) {
+
+        const toast =
+            document.getElementById("toast");
+
+        toast.textContent = message;
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 2500);
+
+    }
+
+
+    /* ================= NEWSLETTER ================= */
+
+    document
+        .getElementById("newsletterForm")
+        .addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const email =
+                document.getElementById("email").value;
+
+            if(email.includes("@")) {
+
+                showToast(
+                    "🎉 Successfully subscribed!"
+                );
+
+                this.reset();
+
+            } else {
+
+                showToast(
+                    "Please enter a valid email."
+                );
+
+            }
+
+        });
+
+
+    /* ================= ESCAPE KEY ================= */
+
+    document.addEventListener(
+        "keydown",
+        function(e) {
+
+            if(e.key === "Escape") {
+
+                closeBlog();
+
+            }
+
+        }
+    );
+
+</script>
+
 </body>
 </html>
