@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>For My Best Friend</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- =====================================================================
+  ⚙️ EASY CUSTOMIZATION — everything you need to edit is right here.
+  Just change the values below. You don't need to touch anything else.
+===================================================================== -->
+<script>
+const CONFIG = {
+  herName: "My Kaduuuuu",                     // her name
+  friendshipStartDate: "2011-01-01",     // YYYY-MM-DD — first day you became friends
+
+  heroMessage: "You are one of the most beautiful Human of my life.",
+
+  timeline: [
+    { title: "How it all started…", text: "Two strangers, neighbors,childhood broskies." },
+    { title: "Our first real conversation", text: "It wasn't even about anything important. But somehow it never stopped after that." },
+    { title: "The first inside joke", text: "The one that still makes no sense to anyone else, and somehow gets funnier every year." },
+    { title: "That one completely chaotic day", text: "You know exactly which one. We still bring it up and neither of us can explain it properly." },
+    { title: "All the memories in between", text: "The late nights, the random calls, the plans we never followed through on, and the ones we did." },
+    { title: "And somehow, here we are ❤️", text: "Still choosing each other, still laughing at the same stupid things." }
+  ],
+
+  photos: [
+    { src: "c:\Users\Mona\OneDrive\ドキュメント\1.jpeg", caption: "That day when we couldn't stop laughing 😂", date: "", location: "" },
+    { src: "images/photo2.jpg", caption: "This one, obviously.", date: "", location: "" },
+    { src: "images/photo3.jpg", caption: "I still think about this day.", date: "", location: "" },
+    { src: "images/photo4.jpg", caption: "Chaos, as usual.", date: "", location: "" }
+  ],
+
+  openWhen: [
+    { emoji: "💙", label: "Open when you're sad", message: "It's okay to not be okay right now. I'm not going anywhere, and neither is this feeling — it will pass. You're allowed to fall apart a little. I'll help you put it back together." },
+    { emoji: "🌸", label: "Open when you're happy", message: "I love this version of you so much. Whatever's making you smile right now — hold onto it, and tell me everything about it later." },
+    { emoji: "🥺", label: "Open when you miss me", message: "I miss you too, more than I probably say out loud. Distance doesn't change anything about us — call me the second you're free." },
+    { emoji: "🌙", label: "Open when you can't sleep", message: "Put your phone on the pillow next to you and just breathe. Think of the dumbest memory we have together — you know it'll make you smile." },
+    { emoji: "💪", label: "Open when you need motivation", message: "You are so much stronger and more capable than you're giving yourself credit for right now. I've watched you get through worse. You've got this." },
+    { emoji: "😂", label: "Open when you need to laugh", message: "Remember that time we were both so sure we were right, and we were both so wrong? Yeah. Think about that." },
+    { emoji: "❤️", label: "Open when you need a reminder of how loved you are", message: "You are loved. Deeply, loudly, and by more people than you realize — starting with me." }
+  ],
+
+  reasons: [
+    { title: "Your Smile", emoji: "😊", text: "Because somehow it makes even bad days feel lighter." },
+    { title: "Your Kindness", emoji: "🌸", text: "You care more than you realize." },
+    { title: "Your Chaos", emoji: "😂", text: "Life would definitely be less fun without your nonsense." },
+    { title: "Your Support", emoji: "🤍", text: "You've been there when I needed someone." },
+    { title: "Your Presence", emoji: "✨", text: "Sometimes you don't even have to say anything." },
+    { title: "Your Honesty", emoji: "🌿", text: "You tell me the truth even when it's not what I want to hear." },
+    { title: "Your Memory", emoji: "📸", text: "You remember the tiny things I forget about myself." },
+    { title: "Your Laugh", emoji: "🎈", text: "Loud, unfiltered, and somehow always contagious." },
+    { title: "Your Patience", emoji: "🍃", text: "With me, of all people. Thank you for that." },
+    { title: "Just... You", emoji: "💫", text: "No further explanation needed." }
+  ],
+
+  quiz: [
+    { q: "Who is more likely to start a random argument?", a: ["Me", "You", "Both, equally"] },
+    { q: "Who apologizes first?", a: ["Me", "You", "Neither, we just move on"] },
+    { q: "Who sends more random 3am messages?", a: ["Me", "You", "It's a tie"] },
+    { q: "Who laughs at the worst possible moment?", a: ["Me", "You", "Both of us, always"] },
+    { q: "Who would survive longer in a zombie apocalypse?", a: ["Me", "You", "We'd go down together"] }
+  ],
+
+  randomMemories: [
+    "Remember when we stayed up way too late just talking about absolutely everything?",
+    "That time we made a plan and then completely abandoned it for something dumber and better.",
+    "The voice note that was supposed to be 10 seconds and turned into 4 minutes.",
+    "When we laughed so hard about something that wasn't even that funny.",
+    "That random Tuesday that somehow became one of the best days.",
+    "The playlist we made that neither of us can listen to without thinking of the other."
+  ],
+
+  memoryCloudWords: [
+    { word: "Laughter", memory: "The kind that makes your stomach hurt and you can't even remember why it started." },
+    { word: "Late-night talks", memory: "The conversations that only seem to happen after midnight, about everything and nothing." },
+    { word: "Inside jokes", memory: "The ones that require zero context and still make us lose it every time." },
+    { word: "Random calls", memory: "No reason, no agenda — just 'hey, what are you doing' and two hours later we're still talking." },
+    { word: "Chaos", memory: "Us, in basically every situation we've ever been in together." },
+    { word: "Comfort", memory: "Knowing I can show up exactly as I am, no explanation needed." },
+    { word: "Adventures", memory: "Every plan that started as a joke and somehow actually happened." },
+    { word: "Memes", memory: "The ones I send you at 2am that you somehow always reply to instantly." },
+    { word: "Forever", memory: "This one. This is the one that matters most." }
+  ],
+
+  secretMessage: "If I could go back and relive one thing, I'd choose all the ordinary moments with you — the ones that felt too small to remember, but somehow I remember every one.",
+
+  finalLetter: `Dear [NAME],
+
+I don't think I've ever properly told you what your friendship means to me, so I'm putting it here instead, where it can't get lost in a busy day or a quick "talk later."
+
+Thank you for every late-night conversation, every inside joke, every moment you showed up without me even having to ask. Thank you for knowing exactly what to say, and for knowing sometimes I just need you to say nothing at all.
+
+You've made ordinary days feel like something worth remembering. And somewhere along the way, "friend" stopped being a big enough word for what you are to me.
+
+Thank you for being my best friend.
+
+Here's to all the memories we've made… and all the ones we haven't yet.`,
+
+  finalPhoto: "images/final-photo.jpg",
+  musicFile: "music/our-song.mp3"
+};
+</script>
+
+<style>
+:root{
+  --pastel-blue:#c9e0f5;
+  --baby-pink:#f7d6e0;
+  --lavender:#e3d9f5;
+  --white:#fffdfb;
+  --ink:#4a3f52;
+  --ink-soft:#7c6f88;
+  --glow:#fff3f8;
+  --shadow-soft: 0 12px 40px rgba(150, 130, 180, 0.18);
+  --radius: 26px;
+  --font-body: 'Quicksand', sans-serif;
+  --font-script: 'Dancing Script', cursive;
+  --font-thin: 'Poppins', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:20px;}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background: linear-gradient(160deg, #fdf6f9 0%, #eef3fb 45%, #f3edfb 100%);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+img{max-width:100%; display:block;}
+button{font-family:inherit; border:none; cursor:pointer; background:none;}
+.section{
+  position:relative;
+  padding: 90px 6vw;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-title{
+  font-family:var(--font-script);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  text-align:center;
+  color:#8a5b7c;
+  margin-bottom:14px;
+}
+.section-sub{
+  text-align:center;
+  color:var(--ink-soft);
+  font-weight:500;
+  max-width:560px;
+  margin:0 auto 50px;
+  line-height:1.6;
+}
+.glass{
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+.reveal{ opacity:0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.in{ opacity:1; transform:none; }
+
+/* ---------- floating particles layer ---------- */
+#particles{ position:fixed; inset:0; pointer-events:none; z-index:2; overflow:hidden; }
+.particle{ position:absolute; opacity:.5; animation: floatUp linear infinite; }
+@keyframes floatUp{
+  0%{ transform: translateY(110vh) translateX(0) rotate(0deg); opacity:0; }
+  10%{ opacity:.6; }
+  90%{ opacity:.6; }
+  100%{ transform: translateY(-10vh) translateX(var(--drift,20px)) rotate(360deg); opacity:0; }
+}
+.click-heart{
+  position:fixed; z-index:9999; pointer-events:none;
+  font-size:18px; color:#e58bb0;
+  animation: clickPop 900ms ease-out forwards;
+}
+@keyframes clickPop{
+  0%{ transform: translate(-50%,-50%) scale(0.4); opacity:1; }
+  100%{ transform: translate(-50%,-160%) scale(1.1); opacity:0; }
+}
+
+/* ================= OPENING SCREEN ================= */
+#opening{
+  position:fixed; inset:0; z-index:1000;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center;
+  background: linear-gradient(160deg,#f8e4ec,#dce8f9 60%, #e7ddf7);
+  transition: opacity 1s ease, visibility 1s ease;
+  padding: 24px;
+}
+#opening.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+.open-title{
+  font-family:var(--font-script);
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  color:#8a5b7c;
+  margin-bottom:10px;
+}
+.open-sub{
+  font-family:var(--font-thin);
+  font-weight:300;
+  color:#6d5d78;
+  font-size:1.05rem;
+  margin-bottom:40px;
+  line-height:1.7;
+}
+.envelope{
+  width:150px; height:105px; position:relative; margin-bottom:46px;
+  cursor:pointer;
+}
+.envelope .body{
+  position:absolute; inset:0;
+  background: linear-gradient(135deg,#fff,#fce9f1);
+  border-radius:10px;
+  box-shadow: var(--shadow-soft);
+}
+.envelope .flap{
+  position:absolute; top:0; left:0; width:100%; height:60%;
+  background: linear-gradient(135deg,#f9d3e4,#e6d6f7);
+  clip-path: polygon(0 0, 100% 0, 50% 85%);
+  transform-origin: top center;
+  border-radius:10px 10px 0 0;
+  animation: envFloat 3.4s ease-in-out infinite;
+}
+@keyframes envFloat{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-6px);} }
+.envelope .heart-seal{
+  position:absolute; top:52%; left:50%; transform:translate(-50%,-50%);
+  color:#d8698f; font-size:22px; z-index:2;
+}
+.open-btn{
+  font-family:var(--font-body); font-weight:700; font-size:1.05rem;
+  color:#7a4d68; background: linear-gradient(135deg,var(--baby-pink),var(--lavender));
+  padding:16px 34px; border-radius:50px; box-shadow: var(--shadow-soft);
+  transition: transform .25s ease;
+}
+.open-btn:hover{ transform: translateY(-3px) scale(1.03); }
+
+/* ================= HERO ================= */
+#hero{
+  min-height:92vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; position:relative;
+}
+.hero-name{
+  font-family:var(--font-script);
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  color:#8a5b7c;
+}
+#typed-msg{
+  font-family:var(--font-thin); font-weight:400;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color:#6d5d78; margin:22px 0 26px; min-height:2.4em;
+  max-width:640px;
+}
+.hero-para{
+  max-width:520px; color:var(--ink-soft); line-height:1.8; font-weight:500;
+}
+.cursor{ display:inline-block; width:2px; background:#b98aa8; margin-left:2px; animation: blink 1s step-end infinite; }
+@keyframes blink{ 50%{ opacity:0; } }
+
+/* ================= GALLERY ================= */
+.gallery{
+  columns: 3 220px; column-gap: 22px;
+}
+.polaroid{
+  break-inside: avoid; margin-bottom:22px;
+  background:#fff; padding:14px 14px 46px; border-radius:6px;
+  box-shadow: 0 10px 26px rgba(150,130,180,.2);
+  cursor:pointer; transform: rotate(var(--tilt,0deg));
+  transition: transform .3s ease;
+}
+.polaroid:nth-child(odd){ --tilt: -2.5deg; }
+.polaroid:nth-child(even){ --tilt: 2deg; }
+.polaroid:hover{ transform: rotate(0deg) translateY(-6px); }
+.polaroid img{ width:100%; border-radius:2px; background:linear-gradient(135deg,var(--pastel-blue),var(--baby-pink)); aspect-ratio:1/1; object-fit:cover; }
+.polaroid .cap{ font-family:var(--font-script); font-size:1.05rem; text-align:center; margin-top:10px; color:#6d5d78; }
+
+.lightbox{
+  position:fixed; inset:0; z-index:1200; display:none; align-items:center; justify-content:center;
+  background: rgba(60,45,70,0.55); backdrop-filter: blur(10px); padding:24px;
+}
+.lightbox.show{ display:flex; }
+.lightbox-inner{ max-width:560px; width:100%; text-align:center; }
+.lightbox-inner img{ width:100%; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.3); }
+.lightbox-cap{ color:#fff; font-family:var(--font-script); font-size:1.4rem; margin-top:18px; }
+.lightbox-close{ position:absolute; top:24px; right:28px; color:#fff; font-size:1.8rem; }
+
+/* ================= TIMELINE ================= */
+.timeline{ position:relative; margin-top:20px; }
+.timeline::before{
+  content:''; position:absolute; left:20px; top:0; bottom:0; width:2px;
+  background: linear-gradient(var(--pastel-blue),var(--baby-pink),var(--lavender));
+}
+.t-item{ position:relative; padding-left:60px; margin-bottom:44px; }
+.t-dot{ position:absolute; left:11px; top:4px; width:20px; height:20px; border-radius:50%;
+  background: linear-gradient(135deg,var(--baby-pink),var(--lavender)); box-shadow: var(--shadow-soft); }
+.t-item h3{ font-family:var(--font-script); font-size:1.6rem; color:#8a5b7c; margin-bottom:6px; }
+.t-item p{ color:var(--ink-soft); line-height:1.7; }
+
+/* ================= OPEN WHEN CARDS ================= */
+.ow-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+.ow-card{ padding:30px 20px; text-align:center; cursor:pointer; transition: transform .3s ease; }
+.ow-card:hover{ transform: translateY(-6px); }
+.ow-emoji{ font-size:2.2rem; margin-bottom:12px; }
+.ow-label{ font-weight:700; color:#6d5d78; }
+
+.ow-modal{ position:fixed; inset:0; z-index:1200; display:none; align-items:center; justify-content:center; background: rgba(60,45,70,0.5); backdrop-filter: blur(10px); padding:24px; }
+.ow-modal.show{ display:flex; }
+.ow-modal-card{ max-width:460px; width:100%; padding:44px 32px; text-align:center; position:relative; }
+.ow-modal-card .ow-emoji{ font-size:2.6rem; }
+.ow-modal-msg{ font-family:var(--font-thin); line-height:1.9; color:#6d5d78; margin-top:18px; font-size:1.05rem; }
+.ow-modal-close{ position:absolute; top:16px; right:20px; font-size:1.4rem; color:#a98cae; }
+
+/* ================= REASONS ================= */
+.reasons-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px; }
+.reason-card{ padding:28px 24px; transition: transform .35s ease, box-shadow .35s ease; }
+.reason-card:hover{ transform: translateY(-8px) rotate(-1deg); box-shadow: 0 20px 46px rgba(150,130,180,.28); }
+.reason-emoji{ font-size:1.8rem; margin-bottom:10px; }
+.reason-card h4{ font-family:var(--font-script); font-size:1.4rem; color:#8a5b7c; margin-bottom:6px; }
+.reason-card p{ color:var(--ink-soft); line-height:1.6; font-size:.95rem; }
+
+/* ================= QUIZ ================= */
+.quiz-box{ padding:40px 30px; max-width:600px; margin:0 auto; }
+.quiz-q{ font-weight:700; color:#6d5d78; margin-bottom:16px; font-size:1.1rem; }
+.quiz-opts{ display:flex; flex-direction:column; gap:10px; margin-bottom:26px; }
+.quiz-opt{ padding:12px 18px; border-radius:14px; background:rgba(255,255,255,.7); text-align:left; font-weight:600; color:#6d5d78; transition: background .2s, transform .2s; }
+.quiz-opt:hover{ background:#fff; transform: translateX(4px); }
+.quiz-opt.picked{ background: linear-gradient(135deg,var(--baby-pink),var(--lavender)); }
+.quiz-progress{ text-align:center; color:var(--ink-soft); font-size:.9rem; margin-bottom:10px; }
+.quiz-done{ text-align:center; }
+.quiz-done h3{ font-family:var(--font-script); font-size:1.8rem; color:#8a5b7c; }
+.action-btn{ margin-top:20px; font-weight:700; color:#7a4d68; background: linear-gradient(135deg,var(--baby-pink),var(--lavender)); padding:12px 28px; border-radius:50px; box-shadow: var(--shadow-soft); }
+
+/* ================= RANDOM MEMORY ================= */
+.memory-box{ text-align:center; }
+#memoryCard{ padding:34px; max-width:520px; margin:26px auto 0; min-height:90px; display:flex; align-items:center; justify-content:center; font-family:var(--font-script); font-size:1.3rem; color:#6d5d78; }
+
+/* ================= SECRET ================= */
+.secret-wrap{ text-align:center; }
+.lock{ font-size:3rem; color:#a98cae; margin:20px auto; animation: pulseGlow 2.4s ease-in-out infinite; }
+@keyframes pulseGlow{ 0%,100%{ filter: drop-shadow(0 0 4px rgba(200,160,220,.4)); } 50%{ filter: drop-shadow(0 0 18px rgba(200,160,220,.8)); } }
+.secret-msg{ max-width:520px; margin:24px auto 0; padding:30px; font-family:var(--font-thin); line-height:1.9; color:#6d5d78; display:none; }
+.secret-msg.show{ display:block; }
+
+/* ================= LETTER ================= */
+.letter-wrap{ text-align:center; }
+.letter-envelope{ width:170px; height:118px; margin:20px auto; position:relative; cursor:pointer; }
+.paper{
+  display:none; text-align:left; white-space:pre-line;
+  max-width:560px; margin:30px auto 0; padding:44px 38px;
+  font-family:'Dancing Script', cursive; font-size:1.3rem; line-height:1.85; color:#5c4a66;
+  background: repeating-linear-gradient(#fffdf9 0 38px, #f4e9f0 39px);
+}
+.paper.show{ display:block; animation: unfold .7s ease; }
+@keyframes unfold{ from{ opacity:0; transform: scaleY(.85) translateY(-14px); } to{ opacity:1; transform:none; } }
+
+/* ================= COUNTER ================= */
+.counter-wrap{ text-align:center; }
+.counter-num{ font-family:var(--font-script); font-size: clamp(2.8rem,8vw,4.5rem); color:#8a5b7c; }
+.counter-sub{ color:var(--ink-soft); font-weight:600; margin-top:6px; }
+.counter-grid{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:30px; }
+.counter-chip{ padding:18px 26px; min-width:110px; }
+.counter-chip .n{ font-size:1.8rem; font-weight:700; color:#8a5b7c; }
+.counter-chip .l{ font-size:.85rem; color:var(--ink-soft); font-weight:600; }
+
+/* ================= MEMORY CLOUD ================= */
+.cloud-wrap{ position:relative; min-height:340px; }
+.cloud-word{ position:absolute; font-family:var(--font-script); font-size:1.3rem; color:#8a5b7c; cursor:pointer; padding:6px 12px; animation: cloudFloat 6s ease-in-out infinite; }
+@keyframes cloudFloat{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-14px);} }
+.cloud-popup{ text-align:center; margin-top:20px; padding:24px; max-width:480px; margin-left:auto; margin-right:auto; display:none; }
+.cloud-popup.show{ display:block; }
+
+/* ================= FINAL ================= */
+#final-surprise{ text-align:center; padding-bottom:120px; }
+.final-btn{ font-weight:700; font-size:1.1rem; color:#7a4d68; background: linear-gradient(135deg,var(--baby-pink),var(--lavender)); padding:18px 40px; border-radius:50px; box-shadow: var(--shadow-soft); }
+.final-overlay{ position:fixed; inset:0; z-index:1300; display:none; align-items:center; justify-content:center; flex-direction:column; text-align:center; background: linear-gradient(160deg,#2c2140,#3a2c50); padding:24px; }
+.final-overlay.show{ display:flex; }
+.final-lines p{ color:#f2e6f5; font-family:var(--font-thin); font-weight:300; font-size:clamp(1.1rem,3vw,1.5rem); margin:10px 0; opacity:0; animation: lineIn .8s forwards; }
+@keyframes lineIn{ to{ opacity:1; transform:none;} from{ transform: translateY(10px);} }
+.final-tag{ font-family:var(--font-script); font-size:clamp(2rem,5vw,3rem); color:#f7d6e0; margin-top:26px; }
+.final-photo{ width:220px; height:220px; object-fit:cover; border-radius:18px; margin-top:26px; box-shadow:0 20px 50px rgba(0,0,0,.4); }
+.final-close{ margin-top:34px; color:#e3d3ec; text-decoration:underline; font-weight:600; }
+.stars-layer{ position:absolute; inset:0; overflow:hidden; }
+.star{ position:absolute; width:3px; height:3px; background:#fff; border-radius:50%; animation: twinkle 2.4s ease-in-out infinite; }
+@keyframes twinkle{ 0%,100%{ opacity:.2;} 50%{ opacity:1;} }
+
+/* ================= MUSIC PLAYER ================= */
+#musicPlayer{
+  position:fixed; bottom:22px; right:22px; z-index:1500;
+  display:flex; align-items:center; gap:10px;
+  padding:10px 16px 10px 10px; border-radius:50px;
+  background: rgba(255,255,255,.75); backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-soft); cursor:pointer; user-select:none;
+}
+.disc{ width:34px; height:34px; border-radius:50%; background: radial-gradient(circle at center, #6d5d78 0 20%, var(--lavender) 21% 60%, #6d5d78 61% 64%, var(--baby-pink) 65%); }
+.disc.spin{ animation: spin 3.4s linear infinite; }
+@keyframes spin{ to{ transform: rotate(360deg);} }
+#musicLabel{ font-size:.82rem; font-weight:700; color:#6d5d78; }
+
+footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem; }
+
+@media (max-width:700px){
+  .gallery{ columns: 2 160px; }
+  .section{ padding:64px 5vw; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: .001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<!-- ===================== OPENING SCREEN ===================== -->
+<div id="opening">
+  <div class="open-title">For My Best Friend 💙</div>
+  <div class="open-sub">A little corner of the internet…<br>made only for you.</div>
+  <div class="envelope" id="envelope">
+    <div class="body"></div>
+    <div class="flap"></div>
+    <i class="fa-solid fa-heart heart-seal"></i>
+  </div>
+  <button class="open-btn" id="openBtn">Open Your Surprise ✨</button>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="" type="audio/mpeg">
+</audio>
+
+<!-- ===================== MUSIC PLAYER ===================== -->
+<div id="musicPlayer" title="Play / pause music">
+  <div class="disc" id="disc"></div>
+  <span id="musicLabel">🎵 Play</span>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="hero-name reveal">Hey, <span id="herNameSpan"></span> 💙</div>
+  <div id="typed-msg"></div>
+  <p class="hero-para reveal">This website is just a tiny collection of memories, feelings, chaos, laughter, and all the little moments that make our friendship special.</p>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="section" id="gallery-section">
+  <div class="section-title reveal">Our Memory Gallery</div>
+  <p class="section-sub reveal">A few of my favorites. Tap any photo.</p>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></span>
+  <div class="lightbox-inner">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-cap" id="lightboxCap"></div>
+  </div>
+</div>
+
+<!-- ===================== TIMELINE ===================== -->
+<section class="section" id="story-section">
+  <div class="section-title reveal">Our Story</div>
+  <p class="section-sub reveal">How we ended up here.</p>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- ===================== OPEN WHEN ===================== -->
+<section class="section" id="openwhen-section">
+  <div class="section-title reveal">Open When You Need Me 💌</div>
+  <p class="section-sub reveal">Little envelopes, for whenever you need one.</p>
+  <div class="ow-grid" id="owGrid"></div>
+</section>
+
+<div class="ow-modal" id="owModal">
+  <div class="glass ow-modal-card">
+    <span class="ow-modal-close" id="owModalClose"><i class="fa-solid fa-xmark"></i></span>
+    <div class="ow-emoji" id="owModalEmoji"></div>
+    <div class="ow-label" id="owModalLabel"></div>
+    <div class="ow-modal-msg" id="owModalMsg"></div>
+  </div>
+</div>
+
+<!-- ===================== REASONS ===================== -->
+<section class="section" id="reasons-section">
+  <div class="section-title reveal">Just a Few Reasons Why You're Special</div>
+  <p class="section-sub reveal">There are more. This is just a start.</p>
+  <div class="reasons-grid" id="reasonsGrid"></div>
+</section>
+
+<!-- ===================== QUIZ ===================== -->
+<section class="section" id="quiz-section">
+  <div class="section-title reveal">How Well Do You Know Our Friendship?</div>
+  <div class="glass quiz-box" id="quizBox"></div>
+</section>
+
+<!-- ===================== RANDOM MEMORY ===================== -->
+<section class="section memory-box" id="random-section">
+  <div class="section-title reveal">A Little Memory, At Random</div>
+  <button class="action-btn" id="randomBtn">Give Me A Random Memory ✨</button>
+  <div class="glass" id="memoryCard">Tap the button — a memory will appear here.</div>
+</section>
+
+<!-- ===================== SECRET ===================== -->
+<section class="section secret-wrap" id="secret-section">
+  <div class="section-title reveal">There's Something Hidden Here…</div>
+  <div class="lock"><i class="fa-solid fa-lock" id="lockIcon"></i></div>
+  <button class="action-btn" id="unlockBtn">Unlock It 🔐</button>
+  <div class="glass secret-msg" id="secretMsg"></div>
+</section>
+
+<!-- ===================== LETTER ===================== -->
+<section class="section letter-wrap" id="letter-section">
+  <div class="section-title reveal">One Last Letter 💌</div>
+  <div class="letter-envelope" id="letterEnvelope">
+    <div class="body" style="position:absolute;inset:0;background:linear-gradient(135deg,#fff,#e9defa);border-radius:10px;box-shadow:var(--shadow-soft);"></div>
+    <div class="flap" style="position:absolute;top:0;left:0;width:100%;height:60%;background:linear-gradient(135deg,var(--pastel-blue),var(--lavender));clip-path:polygon(0 0,100% 0,50% 85%);border-radius:10px 10px 0 0;"></div>
+  </div>
+  <div class="paper" id="letterPaper"></div>
+</section>
+
+<!-- ===================== COUNTER ===================== -->
+<section class="section counter-wrap" id="counter-section">
+  <div class="section-title reveal">Look How Far We've Come ✨</div>
+  <p class="section-sub reveal">We've been friends for…</p>
+  <div class="counter-num" id="counterNum">0</div>
+  <div class="counter-sub">days of friendship 💙</div>
+  <div class="counter-grid">
+    <div class="glass counter-chip"><div class="n" id="cYears">0</div><div class="l">years</div></div>
+    <div class="glass counter-chip"><div class="n" id="cMonths">0</div><div class="l">months</div></div>
+    <div class="glass counter-chip"><div class="n" id="cDays">0</div><div class="l">days</div></div>
+  </div>
+</section>
+
+<!-- ===================== MEMORY CLOUD ===================== -->
+<section class="section" id="cloud-section">
+  <div class="section-title reveal">Mini Memory Cloud</div>
+  <p class="section-sub reveal">Tap a word.</p>
+  <div class="cloud-wrap" id="cloudWrap"></div>
+  <div class="glass cloud-popup" id="cloudPopup"></div>
+</section>
+
+<!-- ===================== FINAL SURPRISE ===================== -->
+<section id="final-surprise">
+  <button class="final-btn" id="finalBtn">One Last Thing… 💙</button>
+</section>
+
+<div class="final-overlay" id="finalOverlay">
+  <div class="stars-layer" id="starsLayer"></div>
+  <div class="final-lines" id="finalLines"></div>
+</div>
+
+<footer>made with love, for the best friend anyone could ask for.</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js"></script>
+<script>
+/* ============================================================
+   Wire up config-driven content + all interactions
+============================================================ */
+document.getElementById('herNameSpan').textContent = CONFIG.herName;
+document.querySelector('#bgMusic source').src = CONFIG.musicFile;
+
+/* ---------- floating background particles ---------- */
+(function initParticles(){
+  const layer = document.getElementById('particles');
+  const glyphs = ['💙','✨','🌸','💫','⭐'];
+  for(let i=0;i<22;i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+    p.style.left = Math.random()*100+'vw';
+    p.style.fontSize = (12+Math.random()*14)+'px';
+    p.style.setProperty('--drift', (Math.random()*80-40)+'px');
+    p.style.animationDuration = (10+Math.random()*12)+'s';
+    p.style.animationDelay = (Math.random()*10)+'s';
+    layer.appendChild(p);
+  }
+})();
+
+/* ---------- click heart effect ---------- */
+document.addEventListener('click', (e)=>{
+  if(e.target.closest('button, .polaroid, .ow-card, .cloud-word, a')) { /* still show, just don't block */ }
+  const h = document.createElement('div');
+  h.className='click-heart';
+  h.innerHTML = '<i class="fa-solid fa-heart"></i>';
+  h.style.left = e.clientX+'px';
+  h.style.top = e.clientY+'px';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(), 900);
+});
+
+/* ---------- opening screen ---------- */
+const bgMusic = document.getElementById('bgMusic');
+const disc = document.getElementById('disc');
+const musicLabel = document.getElementById('musicLabel');
+let musicPlaying = false;
+
+document.getElementById('openBtn').addEventListener('click', ()=>{
+  document.getElementById('opening').classList.add('hidden');
+  bgMusic.play().then(()=>{
+    musicPlaying = true;
+    disc.classList.add('spin');
+    musicLabel.textContent = '🎵 Playing';
+  }).catch(()=>{ /* file missing or blocked — silently ignore */ });
+  burstConfettiHearts();
+});
+document.getElementById('envelope').addEventListener('click', ()=> document.getElementById('openBtn').click());
+
+function burstConfettiHearts(){
+  if(window.confetti){
+    confetti({ particleCount: 90, spread: 80, origin:{ y:0.6 }, colors:['#f7d6e0','#c9e0f5','#e3d9f5','#ffffff'] });
+  }
+}
+
+/* ---------- music player toggle ---------- */
+document.getElementById('musicPlayer').addEventListener('click', ()=>{
+  if(musicPlaying){
+    bgMusic.pause(); musicPlaying=false; disc.classList.remove('spin'); musicLabel.textContent='🎵 Paused';
+  } else {
+    bgMusic.play().catch(()=>{}); musicPlaying=true; disc.classList.add('spin'); musicLabel.textContent='🎵 Playing';
+  }
+});
+
+/* ---------- typed hero message ---------- */
+(function typeHero(){
+  const el = document.getElementById('typed-msg');
+  const text = CONFIG.heroMessage;
+  let i = 0;
+  el.innerHTML = '<span id="typedText"></span><span class="cursor">&nbsp;</span>';
+  const typedSpan = document.getElementById('typedText');
+  function step(){
+    if(i <= text.length){
+      typedSpan.textContent = text.slice(0,i);
+      i++;
+      setTimeout(step, 42);
+    }
+  }
+  setTimeout(step, 700);
+})();
+
+/* ---------- scroll reveal ---------- */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el=>io.observe(el));
+
+function revealOnBuild(el){
+  el.classList.add('reveal');
+  io.observe(el);
+}
+
+/* ---------- gallery ---------- */
+const gallery = document.getElementById('gallery');
+CONFIG.photos.forEach((p)=>{
+  const card = document.createElement('div');
+  card.className = 'polaroid';
+  card.innerHTML = `<img src="${p.src}" alt="${p.caption}" onerror="this.style.background='linear-gradient(135deg,var(--pastel-blue),var(--baby-pink))'; this.src='';">
+    <div class="cap">${p.caption}</div>`;
+  card.addEventListener('click', ()=> openLightbox(p));
+  gallery.appendChild(card);
+  revealOnBuild(card);
+});
+function openLightbox(p){
+  document.getElementById('lightboxImg').src = p.src;
+  document.getElementById('lightboxCap').textContent = [p.caption, p.date, p.location].filter(Boolean).join(' · ');
+  document.getElementById('lightbox').classList.add('show');
+}
+document.getElementById('lightboxClose').addEventListener('click', ()=> document.getElementById('lightbox').classList.remove('show'));
+document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox') e.currentTarget.classList.remove('show'); });
+
+/* ---------- timeline ---------- */
+const timelineEl = document.getElementById('timeline');
+CONFIG.timeline.forEach(item=>{
+  const div = document.createElement('div');
+  div.className = 't-item';
+  div.innerHTML = `<div class="t-dot"></div><h3>${item.title}</h3><p>${item.text}</p>`;
+  timelineEl.appendChild(div);
+  revealOnBuild(div);
+});
+
+/* ---------- open when cards ---------- */
+const owGrid = document.getElementById('owGrid');
+CONFIG.openWhen.forEach(card=>{
+  const el = document.createElement('div');
+  el.className = 'glass ow-card';
+  el.innerHTML = `<div class="ow-emoji">${card.emoji}</div><div class="ow-label">${card.label}</div>`;
+  el.addEventListener('click', ()=>{
+    document.getElementById('owModalEmoji').textContent = card.emoji;
+    document.getElementById('owModalLabel').textContent = card.label;
+    document.getElementById('owModalMsg').textContent = card.message;
+    document.getElementById('owModal').classList.add('show');
+    if(window.confetti) confetti({ particleCount: 40, spread:60, origin:{y:0.5}, colors:['#f7d6e0','#e3d9f5'] });
+  });
+  owGrid.appendChild(el);
+  revealOnBuild(el);
+});
+document.getElementById('owModalClose').addEventListener('click', ()=> document.getElementById('owModal').classList.remove('show'));
+document.getElementById('owModal').addEventListener('click', (e)=>{ if(e.target.id==='owModal') e.currentTarget.classList.remove('show'); });
+
+/* ---------- reasons ---------- */
+const reasonsGrid = document.getElementById('reasonsGrid');
+CONFIG.reasons.forEach(r=>{
+  const el = document.createElement('div');
+  el.className = 'glass reason-card';
+  el.innerHTML = `<div class="reason-emoji">${r.emoji}</div><h4>${r.title}</h4><p>${r.text}</p>`;
+  reasonsGrid.appendChild(el);
+  revealOnBuild(el);
+});
+
+/* ---------- quiz ---------- */
+const quizBox = document.getElementById('quizBox');
+let quizIndex = 0;
+function renderQuiz(){
+  if(quizIndex >= CONFIG.quiz.length){
+    quizBox.innerHTML = `<div class="quiz-done"><h3>Okay… you officially know us too well 😂💙</h3></div>`;
+    if(window.confetti) confetti({ particleCount: 140, spread: 100, origin:{y:0.6}, colors:['#f7d6e0','#c9e0f5','#e3d9f5'] });
+    return;
+  }
+  const item = CONFIG.quiz[quizIndex];
+  quizBox.innerHTML = `<div class="quiz-progress">Question ${quizIndex+1} of ${CONFIG.quiz.length}</div>
+    <div class="quiz-q">${item.q}</div>
+    <div class="quiz-opts">${item.a.map(opt=>`<button class="glass quiz-opt">${opt}</button>`).join('')}</div>`;
+  quizBox.querySelectorAll('.quiz-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      btn.classList.add('picked');
+      setTimeout(()=>{ quizIndex++; renderQuiz(); }, 350);
+    });
+  });
+}
+renderQuiz();
+
+/* ---------- random memory ---------- */
+document.getElementById('randomBtn').addEventListener('click', ()=>{
+  const list = CONFIG.randomMemories;
+  const pick = list[Math.floor(Math.random()*list.length)];
+  const card = document.getElementById('memoryCard');
+  card.style.opacity = 0;
+  setTimeout(()=>{ card.textContent = pick; card.style.transition='opacity .4s ease'; card.style.opacity = 1; }, 150);
+});
+
+/* ---------- secret lock ---------- */
+document.getElementById('unlockBtn').addEventListener('click', ()=>{
+  document.getElementById('lockIcon').className = 'fa-solid fa-lock-open';
+  document.getElementById('secretMsg').textContent = CONFIG.secretMessage;
+  document.getElementById('secretMsg').classList.add('show');
+  if(window.confetti) confetti({ particleCount: 60, spread:70, origin:{y:0.5} });
+});
+
+/* ---------- letter ---------- */
+document.getElementById('letterEnvelope').addEventListener('click', ()=>{
+  const paper = document.getElementById('letterPaper');
+  paper.textContent = CONFIG.finalLetter.replace('[NAME]', CONFIG.herName);
+  paper.classList.add('show');
+});
+
+/* ---------- friendship counter ---------- */
+(function counter(){
+  const start = new Date(CONFIG.friendshipStartDate);
+  const now = new Date();
+  const diffMs = now - start;
+  const totalDays = Math.max(0, Math.floor(diffMs / 86400000));
+  const years = Math.floor(totalDays/365);
+  const months = Math.floor((totalDays%365)/30);
+  const days = totalDays - years*365 - months*30;
+
+  const numEl = document.getElementById('counterNum');
+  let n = 0;
+  const step = Math.max(1, Math.floor(totalDays/60));
+  const t = setInterval(()=>{
+    n += step;
+    if(n >= totalDays){ n = totalDays; clearInterval(t); }
+    numEl.textContent = n.toLocaleString();
+  }, 20);
+
+  document.getElementById('cYears').textContent = years;
+  document.getElementById('cMonths').textContent = months;
+  document.getElementById('cDays').textContent = days;
+})();
+
+/* ---------- memory cloud ---------- */
+const cloudWrap = document.getElementById('cloudWrap');
+CONFIG.memoryCloudWords.forEach((item, idx)=>{
+  const el = document.createElement('div');
+  el.className = 'cloud-word';
+  el.textContent = item.word;
+  el.style.left = (8 + (idx*13)%80) + '%';
+  el.style.top = (10 + ((idx*37)%75)) + '%';
+  el.style.animationDelay = (idx*0.4)+'s';
+  el.addEventListener('click', ()=>{
+    const pop = document.getElementById('cloudPopup');
+    pop.textContent = item.memory;
+    pop.classList.add('show');
+  });
+  cloudWrap.appendChild(el);
+});
+
+/* ---------- final surprise ---------- */
+document.getElementById('finalBtn').addEventListener('click', ()=>{
+  const overlay = document.getElementById('finalOverlay');
+  overlay.classList.add('show');
+  const starsLayer = document.getElementById('starsLayer');
+  starsLayer.innerHTML = '';
+  for(let i=0;i<60;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*100+'%';
+    s.style.animationDelay = (Math.random()*2)+'s';
+    starsLayer.appendChild(s);
+  }
+  const lines = [
+    "Thank you.",
+    "Thank you for being there.",
+    "Thank you for understanding me.",
+    "Thank you for all the laughter.",
+    "Thank you for every memory.",
+    "And most importantly…",
+    "Thank you for being YOU. 💙"
+  ];
+  const linesEl = document.getElementById('finalLines');
+  linesEl.innerHTML = lines.map((l,i)=>`<p style="animation-delay:${i*0.9}s">${l}</p>`).join('')
+    + `<div class="final-tag" style="animation:lineIn .8s forwards; animation-delay:${lines.length*0.9}s; opacity:0;">Best friends. Always. ✨</div>`
+    + `<img class="final-photo" src="${CONFIG.finalPhoto}" alt="us" style="animation:lineIn .8s forwards; animation-delay:${lines.length*0.9+0.4}s; opacity:0;" onerror="this.style.display='none'">`
+    + `<div class="final-close" id="finalClose">close</div>`;
+  document.getElementById('finalClose').addEventListener('click', ()=> overlay.classList.remove('show'));
+
+  setTimeout(()=>{
+    if(window.confetti){
+      confetti({ particleCount: 160, spread: 120, origin:{y:0.5}, colors:['#f7d6e0','#c9e0f5','#e3d9f5','#ffffff'] });
+    }
+  }, lines.length*900);
+});
+</script>
+</body>
+</html>
