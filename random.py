@@ -37,9 +37,6 @@ def get_next_id(tasks):
     return max(task["id"] for task in tasks) + 1
 
 
-# ==========================================================
-# PRIORITY
-# ==========================================================
 
 def choose_priority():
 
