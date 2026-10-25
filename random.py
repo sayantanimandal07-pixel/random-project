@@ -1,14 +1,7 @@
 import json
 import os
 from datetime import datetime
-
-
 FILE_NAME = "tasks.json"
-
-
-# ==========================================================
-# FILE HANDLING
-# ==========================================================
 
 def load_tasks():
     """Load tasks from JSON file."""
