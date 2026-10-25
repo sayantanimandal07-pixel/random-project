@@ -61,11 +61,6 @@ def choose_priority():
         else:
             print("❌ Invalid choice. Please try again.")
 
-
-# ==========================================================
-# DATE
-# ==========================================================
-
 def get_due_date():
 
     while True:
