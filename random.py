@@ -101,11 +101,6 @@ def is_overdue(task):
 
     return due_date < datetime.now().date()
 
-
-# ==========================================================
-# STATUS
-# ==========================================================
-
 def get_status(task):
 
     if task["completed"]:
@@ -115,11 +110,6 @@ def get_status(task):
         return "⚠️ Overdue"
 
     return "⏳ Pending"
-
-
-# ==========================================================
-# DISPLAY SINGLE TASK
-# ==========================================================
 
 def display_task(task):
 
