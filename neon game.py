@@ -29,10 +29,6 @@ columns = 80
 drops = [random.randint(-20, 0) for _ in range(columns)]
 
 
-# -----------------------------
-# MATRIX ANIMATION
-# -----------------------------
-
 def matrix_effect():
 
     canvas.delete("matrix")
@@ -56,7 +52,6 @@ def matrix_effect():
 
         drops[i] += 1
 
-        # Reset when character reaches bottom
         if drops[i] * 10 > 600:
 
             if random.random() > 0.975:
