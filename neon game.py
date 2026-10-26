@@ -7,8 +7,6 @@ root.title("MATRIX HACKER")
 root.geometry("800x600")
 root.configure(bg="black")
 
-
-
 canvas = tk.Canvas(
     root,
     width=800,
