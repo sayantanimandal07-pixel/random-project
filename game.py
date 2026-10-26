@@ -1,4 +1,3 @@
-```python
 import tkinter as tk
 from tkinter import messagebox
 root = tk.Tk()
@@ -7,7 +6,6 @@ root.geometry("450x570")
 root.resizable(False, False)
 root.configure(bg="#151525")
 
-# Game variables
 current_player = "X"
 board = [""] * 9
 buttons = []
