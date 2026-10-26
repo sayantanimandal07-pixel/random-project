@@ -161,7 +161,6 @@ score_label = tk.Label(
 score_label.pack(pady=8)
 
 
-# Status
 status_label = tk.Label(
     root,
     text="Player X's Turn",
@@ -172,7 +171,6 @@ status_label = tk.Label(
 status_label.pack(pady=10)
 
 
-# Game board
 game_frame = tk.Frame(root, bg=BG_COLOR)
 game_frame.pack(pady=10)
 
