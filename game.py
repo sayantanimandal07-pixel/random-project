@@ -107,8 +107,6 @@ def button_click(index):
         fg=X_COLOR if current_player == "X" else O_COLOR
     )
 
-
-# Restart current round
 def restart_game():
     global current_player, board, game_over
 
