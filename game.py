@@ -11,11 +11,9 @@ board = [""] * 9
 buttons = []
 game_over = False
 
-# Score variables
 score_x = 0
 score_o = 0
 
-# Colors
 BG_COLOR = "#151525"
 BUTTON_COLOR = "#252540"
 X_COLOR = "#00D9FF"
@@ -23,7 +21,6 @@ O_COLOR = "#FF4D8D"
 TEXT_COLOR = "#FFFFFF"
 
 
-# Check winner
 def check_winner():
     winning_combinations = [
         (0, 1, 2),
@@ -42,15 +39,12 @@ def check_winner():
 
     return None
 
-
-# Update score display
 def update_score():
     score_label.config(
         text=f"Player X: {score_x}     Player O: {score_o}"
     )
 
 
-# Handle button click
 def button_click(index):
     global current_player, game_over, score_x, score_o
 
