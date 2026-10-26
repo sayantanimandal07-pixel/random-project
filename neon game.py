@@ -19,9 +19,6 @@ canvas = tk.Canvas(
 
 canvas.pack()
 
-# -----------------------------
-# MATRIX CHARACTERS
-# -----------------------------
 
 characters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@"
 
