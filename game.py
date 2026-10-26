@@ -1,8 +1,6 @@
 ```python
 import tkinter as tk
 from tkinter import messagebox
-
-# Main window
 root = tk.Tk()
 root.title("Tic Tac Toe")
 root.geometry("450x570")
