@@ -1,18 +1,13 @@
 import tkinter as tk
 import random
 
-# -----------------------------
-# WINDOW
-# -----------------------------
 
 root = tk.Tk()
 root.title("MATRIX HACKER")
 root.geometry("800x600")
 root.configure(bg="black")
 
-# -----------------------------
-# CANVAS
-# -----------------------------
+
 
 canvas = tk.Canvas(
     root,
