@@ -77,10 +77,6 @@ subtitle = canvas.create_text(
 )
 
 
-# -----------------------------
-# START
-# -----------------------------
-
 matrix_effect()
 
 root.mainloop()
