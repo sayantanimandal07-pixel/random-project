@@ -124,7 +124,6 @@ def restart_game():
     )
 
 
-# Reset scores
 def reset_scores():
     global score_x, score_o
 
