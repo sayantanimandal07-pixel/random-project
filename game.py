@@ -165,8 +165,6 @@ status_label = tk.Label(
     fg=X_COLOR
 )
 status_label.pack(pady=10)
-
-
 game_frame = tk.Frame(root, bg=BG_COLOR)
 game_frame.pack(pady=10)
 
