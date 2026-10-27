@@ -41,8 +41,6 @@ def update_score():
     score_label.config(
         text=f"Player X: {score_x}     Player O: {score_o}"
     )
-
-
 def button_click(index):
     global current_player, game_over, score_x, score_o
 
