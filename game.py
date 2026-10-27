@@ -133,9 +133,6 @@ def reset_scores():
 
     update_score()
     restart_game()
-
-
-# Heading
 title_label = tk.Label(
     root,
     text="TIC TAC TOE",
@@ -145,8 +142,6 @@ title_label = tk.Label(
 )
 title_label.pack(pady=(20, 5))
 
-
-# Scoreboard
 score_label = tk.Label(
     root,
     text="Player X: 0     Player O: 0",
@@ -209,8 +204,6 @@ restart_button = tk.Button(
 )
 restart_button.pack(fill="x", padx=65, pady=(15, 7), ipady=7)
 
-
-# Reset score button
 reset_button = tk.Button(
     root,
     text="Reset Scores",
