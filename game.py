@@ -187,8 +187,6 @@ for i in range(9):
 
     buttons.append(button)
 
-
-# Restart button
 restart_button = tk.Button(
     root,
     text="🔄  Play Again",
@@ -216,8 +214,5 @@ reset_button = tk.Button(
     command=reset_scores
 )
 reset_button.pack(pady=3)
-
-
-# Run application
 root.mainloop()
 ```
