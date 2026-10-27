@@ -19,8 +19,6 @@ BUTTON_COLOR = "#252540"
 X_COLOR = "#00D9FF"
 O_COLOR = "#FF4D8D"
 TEXT_COLOR = "#FFFFFF"
-
-
 def check_winner():
     winning_combinations = [
         (0, 1, 2),
