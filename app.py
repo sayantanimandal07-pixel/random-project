@@ -2,7 +2,6 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-# Static product list data
 PRODUCTS = [
     {"id": 1, "name": "Wireless Mouse", "category": "Electronics", "price": 25.99, "in_stock": True},
     {"id": 2, "name": "Mechanical Keyboard", "category": "Electronics", "price": 89.99, "in_stock": True},
