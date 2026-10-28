@@ -2,13 +2,9 @@ import json
 import os
 from datetime import datetime
 FILE_NAME = "tasks.json"
-
 def load_tasks():
-    """Load tasks from JSON file."""
-
     if not os.path.exists(FILE_NAME):
         return []
-
     try:
         with open(FILE_NAME, "r") as file:
             return json.load(file)
@@ -16,18 +12,12 @@ def load_tasks():
     except (json.JSONDecodeError, FileNotFoundError):
         return []
 
-
 def save_tasks(tasks):
     """Save tasks to JSON file."""
 
     with open(FILE_NAME, "w") as file:
         json.dump(tasks, file, indent=4)
-
-
-# ==========================================================
-# TASK ID
-# ==========================================================
-
+        
 def get_next_id(tasks):
     """Generate the next task ID."""
 
@@ -35,8 +25,6 @@ def get_next_id(tasks):
         return 1
 
     return max(task["id"] for task in tasks) + 1
-
-
 
 def choose_priority():
 
