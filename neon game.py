@@ -1,7 +1,6 @@
 import tkinter as tk
 import random
 
-
 root = tk.Tk()
 root.title("MATRIX HACKER")
 root.geometry("800x600")
@@ -35,7 +34,6 @@ def matrix_effect():
 
         char = random.choice(characters)
 
-        # Neon green Matrix text
         canvas.create_text(
             x,
             y,
