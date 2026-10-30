@@ -69,11 +69,6 @@ def get_due_date():
             print("❌ Invalid date.")
             print("Please use DD-MM-YYYY format.")
 
-
-# ==========================================================
-# OVERDUE CHECK
-# ==========================================================
-
 def is_overdue(task):
 
     if task["completed"]:
@@ -246,11 +241,6 @@ def edit_task(tasks):
 
     print("❌ Task ID not found.")
 
-
-# ==========================================================
-# MARK COMPLETE / PENDING
-# ==========================================================
-
 def toggle_task(tasks):
 
     if not tasks:
@@ -284,11 +274,6 @@ def toggle_task(tasks):
             return
 
     print("❌ Task ID not found.")
-
-
-# ==========================================================
-# DELETE TASK
-# ==========================================================
 
 def delete_task(tasks):
 
@@ -330,11 +315,6 @@ def delete_task(tasks):
 
     print("❌ Task ID not found.")
 
-
-# ==========================================================
-# SEARCH
-# ==========================================================
-
 def search_tasks(tasks):
 
     if not tasks:
@@ -368,11 +348,6 @@ def search_tasks(tasks):
 
     for task in results:
         display_task(task)
-
-
-# ==========================================================
-# FILTER
-# ==========================================================
 
 def filter_tasks(tasks):
 
@@ -424,10 +399,6 @@ def filter_tasks(tasks):
     for task in results:
         display_task(task)
 
-
-# ==========================================================
-# SORT TASKS
-# ==========================================================
 
 def sort_tasks(tasks):
 
