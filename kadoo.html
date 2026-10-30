@@ -10,14 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<!-- =====================================================================
-  ⚙️ EASY CUSTOMIZATION — everything you need to edit is right here.
-  Just change the values below. You don't need to touch anything else.
-===================================================================== -->
 <script>
 const CONFIG = {
-  herName: "My Kaduuuuu",                     // her name
-  friendshipStartDate: "2011-01-01",     // YYYY-MM-DD — first day you became friends
+  herName: "My Kaduuuuu",                  
+  friendshipStartDate: "2011-01-01",    
 
   heroMessage: "You are one of the most beautiful Human of my life.",
 
@@ -185,7 +181,6 @@ button{font-family:inherit; border:none; cursor:pointer; background:none;}
   100%{ transform: translate(-50%,-160%) scale(1.1); opacity:0; }
 }
 
-/* ================= OPENING SCREEN ================= */
 #opening{
   position:fixed; inset:0; z-index:1000;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -301,7 +296,6 @@ button{font-family:inherit; border:none; cursor:pointer; background:none;}
 .t-item h3{ font-family:var(--font-script); font-size:1.6rem; color:#8a5b7c; margin-bottom:6px; }
 .t-item p{ color:var(--ink-soft); line-height:1.7; }
 
-/* ================= OPEN WHEN CARDS ================= */
 .ow-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
 .ow-card{ padding:30px 20px; text-align:center; cursor:pointer; transition: transform .3s ease; }
 .ow-card:hover{ transform: translateY(-6px); }
@@ -323,7 +317,7 @@ button{font-family:inherit; border:none; cursor:pointer; background:none;}
 .reason-card h4{ font-family:var(--font-script); font-size:1.4rem; color:#8a5b7c; margin-bottom:6px; }
 .reason-card p{ color:var(--ink-soft); line-height:1.6; font-size:.95rem; }
 
-/* ================= QUIZ ================= */
+
 .quiz-box{ padding:40px 30px; max-width:600px; margin:0 auto; }
 .quiz-q{ font-weight:700; color:#6d5d78; margin-bottom:16px; font-size:1.1rem; }
 .quiz-opts{ display:flex; flex-direction:column; gap:10px; margin-bottom:26px; }
@@ -335,18 +329,16 @@ button{font-family:inherit; border:none; cursor:pointer; background:none;}
 .quiz-done h3{ font-family:var(--font-script); font-size:1.8rem; color:#8a5b7c; }
 .action-btn{ margin-top:20px; font-weight:700; color:#7a4d68; background: linear-gradient(135deg,var(--baby-pink),var(--lavender)); padding:12px 28px; border-radius:50px; box-shadow: var(--shadow-soft); }
 
-/* ================= RANDOM MEMORY ================= */
+
 .memory-box{ text-align:center; }
 #memoryCard{ padding:34px; max-width:520px; margin:26px auto 0; min-height:90px; display:flex; align-items:center; justify-content:center; font-family:var(--font-script); font-size:1.3rem; color:#6d5d78; }
 
-/* ================= SECRET ================= */
 .secret-wrap{ text-align:center; }
 .lock{ font-size:3rem; color:#a98cae; margin:20px auto; animation: pulseGlow 2.4s ease-in-out infinite; }
 @keyframes pulseGlow{ 0%,100%{ filter: drop-shadow(0 0 4px rgba(200,160,220,.4)); } 50%{ filter: drop-shadow(0 0 18px rgba(200,160,220,.8)); } }
 .secret-msg{ max-width:520px; margin:24px auto 0; padding:30px; font-family:var(--font-thin); line-height:1.9; color:#6d5d78; display:none; }
 .secret-msg.show{ display:block; }
 
-/* ================= LETTER ================= */
 .letter-wrap{ text-align:center; }
 .letter-envelope{ width:170px; height:118px; margin:20px auto; position:relative; cursor:pointer; }
 .paper{
@@ -358,7 +350,6 @@ button{font-family:inherit; border:none; cursor:pointer; background:none;}
 .paper.show{ display:block; animation: unfold .7s ease; }
 @keyframes unfold{ from{ opacity:0; transform: scaleY(.85) translateY(-14px); } to{ opacity:1; transform:none; } }
 
-/* ================= COUNTER ================= */
 .counter-wrap{ text-align:center; }
 .counter-num{ font-family:var(--font-script); font-size: clamp(2.8rem,8vw,4.5rem); color:#8a5b7c; }
 .counter-sub{ color:var(--ink-soft); font-weight:600; margin-top:6px; }
@@ -367,14 +358,12 @@ button{font-family:inherit; border:none; cursor:pointer; background:none;}
 .counter-chip .n{ font-size:1.8rem; font-weight:700; color:#8a5b7c; }
 .counter-chip .l{ font-size:.85rem; color:var(--ink-soft); font-weight:600; }
 
-/* ================= MEMORY CLOUD ================= */
 .cloud-wrap{ position:relative; min-height:340px; }
 .cloud-word{ position:absolute; font-family:var(--font-script); font-size:1.3rem; color:#8a5b7c; cursor:pointer; padding:6px 12px; animation: cloudFloat 6s ease-in-out infinite; }
 @keyframes cloudFloat{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-14px);} }
 .cloud-popup{ text-align:center; margin-top:20px; padding:24px; max-width:480px; margin-left:auto; margin-right:auto; display:none; }
 .cloud-popup.show{ display:block; }
 
-/* ================= FINAL ================= */
 #final-surprise{ text-align:center; padding-bottom:120px; }
 .final-btn{ font-weight:700; font-size:1.1rem; color:#7a4d68; background: linear-gradient(135deg,var(--baby-pink),var(--lavender)); padding:18px 40px; border-radius:50px; box-shadow: var(--shadow-soft); }
 .final-overlay{ position:fixed; inset:0; z-index:1300; display:none; align-items:center; justify-content:center; flex-direction:column; text-align:center; background: linear-gradient(160deg,#2c2140,#3a2c50); padding:24px; }
@@ -460,7 +449,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   </div>
 </div>
 
-<!-- ===================== TIMELINE ===================== -->
 <section class="section" id="story-section">
   <div class="section-title reveal">Our Story</div>
   <p class="section-sub reveal">How we ended up here.</p>
@@ -483,14 +471,13 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   </div>
 </div>
 
-<!-- ===================== REASONS ===================== -->
 <section class="section" id="reasons-section">
   <div class="section-title reveal">Just a Few Reasons Why You're Special</div>
   <p class="section-sub reveal">There are more. This is just a start.</p>
   <div class="reasons-grid" id="reasonsGrid"></div>
 </section>
 
-<!-- ===================== QUIZ ===================== -->
+
 <section class="section" id="quiz-section">
   <div class="section-title reveal">How Well Do You Know Our Friendship?</div>
   <div class="glass quiz-box" id="quizBox"></div>
