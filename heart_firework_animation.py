@@ -3,12 +3,6 @@ import math
 import random
 import time
 
-# ---------------------------------------------------------
-# PINK HEART FIREWORK ANIMATION
-# Inspired by the Instagram reel shown in your screenshot.
-# Uses only Python's built-in turtle, math, random and time.
-# ---------------------------------------------------------
-
 WIDTH = 800
 HEIGHT = 800
 PARTICLES_PER_BURST = 850
@@ -48,7 +42,7 @@ def draw_heart_outline(cx, cy, scale, count=HEART_PARTICLES):
     """Draw a sparkling, slightly irregular heart outline."""
     for _ in range(count):
         angle = random.uniform(0, 2 * math.pi)
-        # Points stay near the curve so the heart remains recognizable.
+ 
         radius = scale * random.uniform(0.94, 1.04)
         x, y = heart_point(angle, radius)
         x += random.uniform(-3, 3)
@@ -103,10 +97,10 @@ def heart_burst_animation():
     """Burst outward, then reveal a pink heart made of sparkles."""
     cx, cy = 0, 0
 
-    # First: a central firework that spreads outward.
+
     firework_burst(cx, cy, amount=PARTICLES_PER_BURST, max_radius=300)
 
-    # Next: heart particles appear in several quick waves.
+
     for wave in range(5):
         drawer.clear()
         draw_heart_outline(cx, cy, scale=13.5, count=HEART_PARTICLES)
@@ -126,9 +120,7 @@ def heart_burst_animation():
     draw_heart_outline(cx, cy, scale=13.5, count=HEART_PARTICLES)
     screen.update()
 
-    # Gentle twinkling around the heart, similar to the reel's sparkles.
     while True:
-        # Add a small batch of sparkles per frame; the heart stays visible.
         for _ in range(18):
             angle = random.uniform(0, 2 * math.pi)
             radius = random.uniform(14, 20)
