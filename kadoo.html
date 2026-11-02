@@ -717,7 +717,6 @@ document.getElementById('letterEnvelope').addEventListener('click', ()=>{
   paper.classList.add('show');
 });
 
-/* ---------- friendship counter ---------- */
 (function counter(){
   const start = new Date(CONFIG.friendshipStartDate);
   const now = new Date();
@@ -757,7 +756,6 @@ CONFIG.memoryCloudWords.forEach((item, idx)=>{
   cloudWrap.appendChild(el);
 });
 
-/* ---------- final surprise ---------- */
 document.getElementById('finalBtn').addEventListener('click', ()=>{
   const overlay = document.getElementById('finalOverlay');
   overlay.classList.add('show');
