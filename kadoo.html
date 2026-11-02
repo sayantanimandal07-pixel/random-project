@@ -32,7 +32,6 @@ const CONFIG = {
     { src: "images/photo3.jpg", caption: "I still think about this day.", date: "", location: "" },
     { src: "images/photo4.jpg", caption: "Chaos, as usual.", date: "", location: "" }
   ],
-
   openWhen: [
     { emoji: "💙", label: "Open when you're sad", message: "It's okay to not be okay right now. I'm not going anywhere, and neither is this feeling — it will pass. You're allowed to fall apart a little. I'll help you put it back together." },
     { emoji: "🌸", label: "Open when you're happy", message: "I love this version of you so much. Whatever's making you smile right now — hold onto it, and tell me everything about it later." },
@@ -405,7 +404,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
 
 <div id="particles"></div>
 
-<!-- ===================== OPENING SCREEN ===================== -->
 <div id="opening">
   <div class="open-title">For My Best Friend 💙</div>
   <div class="open-sub">A little corner of the internet…<br>made only for you.</div>
@@ -421,7 +419,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   <source src="" type="audio/mpeg">
 </audio>
 
-<!-- ===================== MUSIC PLAYER ===================== -->
 <div id="musicPlayer" title="Play / pause music">
   <div class="disc" id="disc"></div>
   <span id="musicLabel">🎵 Play</span>
@@ -433,8 +430,7 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   <div id="typed-msg"></div>
   <p class="hero-para reveal">This website is just a tiny collection of memories, feelings, chaos, laughter, and all the little moments that make our friendship special.</p>
 </section>
-
-<!-- ===================== GALLERY ===================== -->
+  
 <section class="section" id="gallery-section">
   <div class="section-title reveal">Our Memory Gallery</div>
   <p class="section-sub reveal">A few of my favorites. Tap any photo.</p>
@@ -455,7 +451,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   <div class="timeline" id="timeline"></div>
 </section>
 
-<!-- ===================== OPEN WHEN ===================== -->
 <section class="section" id="openwhen-section">
   <div class="section-title reveal">Open When You Need Me 💌</div>
   <p class="section-sub reveal">Little envelopes, for whenever you need one.</p>
@@ -483,14 +478,12 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   <div class="glass quiz-box" id="quizBox"></div>
 </section>
 
-<!-- ===================== RANDOM MEMORY ===================== -->
 <section class="section memory-box" id="random-section">
   <div class="section-title reveal">A Little Memory, At Random</div>
   <button class="action-btn" id="randomBtn">Give Me A Random Memory ✨</button>
   <div class="glass" id="memoryCard">Tap the button — a memory will appear here.</div>
 </section>
 
-<!-- ===================== SECRET ===================== -->
 <section class="section secret-wrap" id="secret-section">
   <div class="section-title reveal">There's Something Hidden Here…</div>
   <div class="lock"><i class="fa-solid fa-lock" id="lockIcon"></i></div>
@@ -498,7 +491,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   <div class="glass secret-msg" id="secretMsg"></div>
 </section>
 
-<!-- ===================== LETTER ===================== -->
 <section class="section letter-wrap" id="letter-section">
   <div class="section-title reveal">One Last Letter 💌</div>
   <div class="letter-envelope" id="letterEnvelope">
@@ -508,7 +500,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   <div class="paper" id="letterPaper"></div>
 </section>
 
-<!-- ===================== COUNTER ===================== -->
 <section class="section counter-wrap" id="counter-section">
   <div class="section-title reveal">Look How Far We've Come ✨</div>
   <p class="section-sub reveal">We've been friends for…</p>
@@ -521,7 +512,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   </div>
 </section>
 
-<!-- ===================== MEMORY CLOUD ===================== -->
 <section class="section" id="cloud-section">
   <div class="section-title reveal">Mini Memory Cloud</div>
   <p class="section-sub reveal">Tap a word.</p>
@@ -529,7 +519,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   <div class="glass cloud-popup" id="cloudPopup"></div>
 </section>
 
-<!-- ===================== FINAL SURPRISE ===================== -->
 <section id="final-surprise">
   <button class="final-btn" id="finalBtn">One Last Thing… 💙</button>
 </section>
@@ -543,13 +532,10 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js"></script>
 <script>
-/* ============================================================
-   Wire up config-driven content + all interactions
-============================================================ */
+
 document.getElementById('herNameSpan').textContent = CONFIG.herName;
 document.querySelector('#bgMusic source').src = CONFIG.musicFile;
 
-/* ---------- floating background particles ---------- */
 (function initParticles(){
   const layer = document.getElementById('particles');
   const glyphs = ['💙','✨','🌸','💫','⭐'];
@@ -578,7 +564,6 @@ document.addEventListener('click', (e)=>{
   setTimeout(()=>h.remove(), 900);
 });
 
-/* ---------- opening screen ---------- */
 const bgMusic = document.getElementById('bgMusic');
 const disc = document.getElementById('disc');
 const musicLabel = document.getElementById('musicLabel');
