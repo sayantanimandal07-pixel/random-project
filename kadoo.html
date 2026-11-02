@@ -376,7 +376,6 @@ button{font-family:inherit; border:none; cursor:pointer; background:none;}
 .star{ position:absolute; width:3px; height:3px; background:#fff; border-radius:50%; animation: twinkle 2.4s ease-in-out infinite; }
 @keyframes twinkle{ 0%,100%{ opacity:.2;} 50%{ opacity:1;} }
 
-/* ================= MUSIC PLAYER ================= */
 #musicPlayer{
   position:fixed; bottom:22px; right:22px; z-index:1500;
   display:flex; align-items:center; gap:10px;
@@ -424,7 +423,6 @@ footer{ text-align:center; padding:40px; color:var(--ink-soft); font-size:.85rem
   <span id="musicLabel">🎵 Play</span>
 </div>
 
-<!-- ===================== HERO ===================== -->
 <section id="hero">
   <div class="hero-name reveal">Hey, <span id="herNameSpan"></span> 💙</div>
   <div id="typed-msg"></div>
@@ -586,7 +584,6 @@ function burstConfettiHearts(){
   }
 }
 
-/* ---------- music player toggle ---------- */
 document.getElementById('musicPlayer').addEventListener('click', ()=>{
   if(musicPlaying){
     bgMusic.pause(); musicPlaying=false; disc.classList.remove('spin'); musicLabel.textContent='🎵 Paused';
@@ -595,7 +592,6 @@ document.getElementById('musicPlayer').addEventListener('click', ()=>{
   }
 });
 
-/* ---------- typed hero message ---------- */
 (function typeHero(){
   const el = document.getElementById('typed-msg');
   const text = CONFIG.heroMessage;
@@ -612,7 +608,6 @@ document.getElementById('musicPlayer').addEventListener('click', ()=>{
   setTimeout(step, 700);
 })();
 
-/* ---------- scroll reveal ---------- */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -624,7 +619,6 @@ function revealOnBuild(el){
   io.observe(el);
 }
 
-/* ---------- gallery ---------- */
 const gallery = document.getElementById('gallery');
 CONFIG.photos.forEach((p)=>{
   const card = document.createElement('div');
@@ -653,7 +647,7 @@ CONFIG.timeline.forEach(item=>{
   revealOnBuild(div);
 });
 
-/* ---------- open when cards ---------- */
+
 const owGrid = document.getElementById('owGrid');
 CONFIG.openWhen.forEach(card=>{
   const el = document.createElement('div');
@@ -682,7 +676,6 @@ CONFIG.reasons.forEach(r=>{
   revealOnBuild(el);
 });
 
-/* ---------- quiz ---------- */
 const quizBox = document.getElementById('quizBox');
 let quizIndex = 0;
 function renderQuiz(){
@@ -713,7 +706,7 @@ document.getElementById('randomBtn').addEventListener('click', ()=>{
   setTimeout(()=>{ card.textContent = pick; card.style.transition='opacity .4s ease'; card.style.opacity = 1; }, 150);
 });
 
-/* ---------- secret lock ---------- */
+
 document.getElementById('unlockBtn').addEventListener('click', ()=>{
   document.getElementById('lockIcon').className = 'fa-solid fa-lock-open';
   document.getElementById('secretMsg').textContent = CONFIG.secretMessage;
