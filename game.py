@@ -6,6 +6,7 @@ root.geometry("450x570")
 root.resizable(False, False)
 root.configure(bg="#151525")
 
+
 current_player = "X"
 board = [""] * 9
 buttons = []
@@ -41,6 +42,7 @@ def update_score():
     score_label.config(
         text=f"Player X: {score_x}     Player O: {score_o}"
     )
+    
 def button_click(index):
     global current_player, game_over, score_x, score_o
 
@@ -75,7 +77,6 @@ def button_click(index):
             score_x += 1
         else:
             score_o += 1
-
         update_score()
 
         messagebox.showinfo(
@@ -84,7 +85,6 @@ def button_click(index):
         )
 
         return
-
     if "" not in board:
         game_over = True
         status_label.config(text="It's a Draw!", fg="#FFD166")
@@ -102,6 +102,7 @@ def button_click(index):
         text=f"Player {current_player}'s Turn",
         fg=X_COLOR if current_player == "X" else O_COLOR
     )
+
 
 def restart_game():
     global current_player, board, game_over
