@@ -6,7 +6,6 @@ root.geometry("450x570")
 root.resizable(False, False)
 root.configure(bg="#151525")
 
-
 current_player = "X"
 board = [""] * 9
 buttons = []
