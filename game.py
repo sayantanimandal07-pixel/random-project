@@ -82,7 +82,6 @@ def button_click(index):
             "Game Over",
             f"Congratulations! Player {current_player} wins!"
         )
-
         return
     if "" not in board:
         game_over = True
@@ -123,7 +122,6 @@ def restart_game():
         fg=X_COLOR
     )
 
-
 def reset_scores():
     global score_x, score_o
 
@@ -161,6 +159,8 @@ status_label = tk.Label(
 status_label.pack(pady=10)
 game_frame = tk.Frame(root, bg=BG_COLOR)
 game_frame.pack(pady=10)
+
+
 
 for i in range(9):
     button = tk.Button(
