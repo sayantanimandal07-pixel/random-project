@@ -215,7 +215,8 @@
       typeof themes?.css === "string" &&
       typeof themes.light === "boolean" &&
       typeof themes.dark === "boolean" &&
-      // The origin-wide cache may belong to a different user or workspace.
+
+      
       themes.accountId === (root.dataset.themeAccountId ?? null) &&
       themes.userId === (root.dataset.themeUserId ?? null)
     ) {
