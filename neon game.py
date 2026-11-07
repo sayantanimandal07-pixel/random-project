@@ -52,11 +52,6 @@ def matrix_effect():
 
     root.after(50, matrix_effect)
 
-
-# -----------------------------
-# HACKER TITLE
-# -----------------------------
-
 title = canvas.create_text(
     400,
     250,
