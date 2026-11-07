@@ -16,7 +16,6 @@ canvas = tk.Canvas(
 
 canvas.pack()
 
-
 characters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@"
 
 columns = 80
