@@ -83,7 +83,7 @@ def firework_burst(cx, cy, amount=PARTICLES_PER_BURST, max_radius=280):
                 continue
             p["x"] += p["vx"]
             p["y"] += p["vy"]
-            # Gravity and drag make the burst fall and slow down.
+    
             p["vy"] -= 0.045
             p["vx"] *= 0.985
             p["vy"] *= 0.985
@@ -114,7 +114,6 @@ def heart_burst_animation():
         screen.update()
         time.sleep(0.18)
 
-    # Add the inner particles and keep the final heart on screen.
     drawer.clear()
     draw_heart_fill(cx, cy, scale=13.5, count=700)
     draw_heart_outline(cx, cy, scale=13.5, count=HEART_PARTICLES)
