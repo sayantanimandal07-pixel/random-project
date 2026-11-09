@@ -60,6 +60,7 @@ title = canvas.create_text(
 )
 
 
+
 subtitle = canvas.create_text(
     400,
     320,
