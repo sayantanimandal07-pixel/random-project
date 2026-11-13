@@ -129,6 +129,7 @@ def heart_burst_animation():
         screen.update()
         time.sleep(0.08)
 
+
 try:
     heart_burst_animation()
 except t.Terminator:
