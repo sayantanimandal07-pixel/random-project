@@ -9,6 +9,7 @@ PARTICLES_PER_BURST = 850
 HEART_PARTICLES = 750
 FPS_DELAY = 0.015
 
+
 screen = t.Screen()
 screen.setup(WIDTH, HEIGHT)
 screen.bgcolor("black")
