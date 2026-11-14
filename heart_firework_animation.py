@@ -9,7 +9,6 @@ PARTICLES_PER_BURST = 850
 HEART_PARTICLES = 750
 FPS_DELAY = 0.015
 
-
 screen = t.Screen()
 screen.setup(WIDTH, HEIGHT)
 screen.bgcolor("black")
@@ -61,6 +60,7 @@ def draw_heart_fill(cx, cy, scale, count=450):
         draw_particle(cx + x, cy + y,
                       random.choice([2, 2, 3]),
                       random.choice(COLORS))
+
 
 def firework_burst(cx, cy, amount=PARTICLES_PER_BURST, max_radius=280):
     """Animate particles expanding from a central point."""
