@@ -172,11 +172,6 @@ def add_task(tasks):
 
     print("\n✅ Task added successfully!")
 
-
-# ==========================================================
-# EDIT TASK
-# ==========================================================
-
 def edit_task(tasks):
 
     if not tasks:
