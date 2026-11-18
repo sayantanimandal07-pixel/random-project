@@ -8,7 +8,6 @@ HEIGHT = 800
 PARTICLES_PER_BURST = 850
 HEART_PARTICLES = 750
 FPS_DELAY = 0.015
-
 screen = t.Screen()
 screen.setup(WIDTH, HEIGHT)
 screen.bgcolor("black")
@@ -50,6 +49,7 @@ def draw_heart_outline(cx, cy, scale, count=HEART_PARTICLES):
         draw_particle(cx + x, cy + y,
                       random.choice([2, 2, 3, 3, 4]),
                       random.choice(COLORS))
+
 
 def draw_heart_fill(cx, cy, scale, count=450):
     """Add a few particles inside the heart."""
